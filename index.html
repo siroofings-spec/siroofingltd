@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="ro">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&I Roofing Ltd | Servicii Profesionale de Acoperișuri & Construcții</title>
-    <meta name="description" content="S&I Roofing Ltd oferă servicii de calitate superioară pentru acoperișuri: montaj, reparații urgente, hidroizolații și mansardări. Cere o cotație gratuită!">
+    <title>S&I Roofing Ltd | Professional Roofing Services Ireland</title>
+    <meta name="description" content="S&I Roofing Ltd - Expert roofing contractors in Ireland. Specialising in Roof Repairs, Velux Windows, Gutters, Dry Verge Systems, Fascia & Soffit, and Lead Valleys. Free quotes by good inspection!">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,24 +12,52 @@
 </head>
 <body>
 
+    <!-- Top Announcement Bar -->
+    <div class="top-bar">
+        <div class="container top-bar-content">
+            <div class="top-left">
+                <span class="pulse-dot"></span>
+                <span>🇮🇪 Serving All Ireland | Emergency Roof Repairs Available 24/7</span>
+            </div>
+            <div class="top-right">
+                <a href="tel:+353838680611" class="top-phone">📞 083-8680611</a>
+                <a href="tel:+353838680611" class="top-phone">+353 83 868 0611</a>
+                <a href="mailto:siroofings@gmail.com" class="top-email">✉️ siroofings@gmail.com</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Header Navigation -->
     <header class="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <span class="logo-badge">S&I</span>
-                <span class="logo-text">ROOFING <small>LTD</small></span>
+                <!-- SVG Logo replicating client's original logo -->
+                <div class="logo-wrapper">
+                    <svg class="logo-icon" viewBox="0 0 200 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="5" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-style="italic" font-size="24" fill="#3B52CA" letter-spacing="1">S&amp;I ROOFING LTD</text>
+                        <path d="M15 58L45 35L75 58" stroke="#3B52CA" stroke-width="4" stroke-linecap="round"/>
+                        <path d="M35 58L85 18L135 58" stroke="#3B52CA" stroke-width="6" stroke-linecap="round"/>
+                        <path d="M100 28V15H112V37" fill="#3B52CA"/>
+                        <rect x="75" y="38" width="8" height="8" fill="#3B52CA"/>
+                        <rect x="87" y="38" width="8" height="8" fill="#3B52CA"/>
+                        <rect x="75" y="48" width="8" height="8" fill="#3B52CA"/>
+                        <rect x="87" y="48" width="8" height="8" fill="#3B52CA"/>
+                        <line x1="85" y1="20" x2="148" y2="58" stroke="#3B52CA" stroke-width="4" stroke-dasharray="3 3"/>
+                    </svg>
+                </div>
             </a>
 
-            <nav class="nav-links" id="navLinks">
-                <a href="#acasa">Acasă</a>
-                <a href="#servicii">Servicii</a>
-                <a href="#despre">Despre Noi</a>
-                <a href="#calculator">Calculator Preț</a>
-                <a href="#faq">Întrebări</a>
-                <a href="#contact" class="btn btn-primary nav-btn">Cere Ofertă</a>
+            <nav class="nav-menu" id="navMenu">
+                <a href="#hero">Home</a>
+                <a href="#services">Services</a>
+                <a href="#bento">Why Choose Us</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact" class="btn btn-primary nav-cta">Get Free Quote</a>
             </nav>
 
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Deschide Meniu">
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Menu">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -37,230 +65,533 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="acasa" class="hero">
-        <div class="hero-overlay"></div>
-        <div class="container hero-content">
-            <div class="hero-text">
-                <span class="hero-badge">⚡ Servicii Rapide & Garanție Extinsă</span>
-                <h1>Construim și Reparăm Acoperișuri Care Rezistă o Viață</h1>
-                <p>Echipa S&I Roofing Ltd îți oferă soluții complete pentru acoperișul tău: de la reparații rapide de urgență până la montaj complet de țiglă, tablă sau hidroizolații.</p>
-
-                <div class="hero-buttons">
-                    <a href="#calculator" class="btn btn-accent btn-lg">Estimează Prețul Acoperișului</a>
-                    <a href="#contact" class="btn btn-outline btn-lg">Contactează Echipa</a>
-                </div>
-
-                <div class="hero-stats">
-                    <div class="stat-item">
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Ani Experiență</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">450+</span>
-                        <span class="stat-label">Acoperișuri Montate</span>
-                    </div>
-                    <div class="stat-item">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label">Clienți Mulțumiți</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Servicii Section -->
-    <section id="servicii" class="section services-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="sub-title">Ce Oferim</span>
-                <h2>Serviciile Noastre Profesionale</h2>
-                <p>Acoperim toate cerințele pentru proprietăți rezidențiale și comerciale cu materiale de top.</p>
+    <main>
+        <!-- Hero Section with Lead Form -->
+        <section id="hero" class="hero">
+            <div class="hero-bg-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
             </div>
 
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon">🏗️</div>
-                    <h3>Montaj Acoperiș Nou</h3>
-                    <p>Montaj complet structură din lemn, șarpantă, țiglă ceramică, țiglă metalică sau șindrilă.</p>
-                    <ul class="service-list">
-                        <li>✓ Structură lemn tratat</li>
-                        <li>✓ Izolație termică & fonică</li>
-                        <li>✓ Garanție până la 30 ani</li>
-                    </ul>
-                </div>
-
-                <div class="service-card featured">
-                    <div class="featured-badge">Cel Mai Solicitat</div>
-                    <div class="service-icon">🛠️</div>
-                    <h3>Reparații Urgente Acoperiș</h3>
-                    <p>Intervenție rapidă pentru infiltrări de apă, țigle sparte sau avarii provocate de furtună.</p>
-                    <ul class="service-list">
-                        <li>✓ Diagnosticare gratuită</li>
-                        <li>✓ Reparare hidroizolații</li>
-                        <li>✓ Înlocuire elemente deteriorate</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🌧️</div>
-                    <h3>Sisteme Pluviale (Jgheaburi)</h3>
-                    <p>Montaj și curățare jgheaburi, burlane și elemente de colectare a apei de ploaie.</p>
-                    <ul class="service-list">
-                        <li>✓ Jgheaburi din cupru & aluminiu</li>
-                        <li>✓ Burlane fără îmbinări</li>
-                        <li>✓ Protecție anti-frunze</li>
-                    </ul>
-                </div>
-
-                <div class="service-card">
-                    <div class="service-icon">🏢</div>
-                    <h3>Hidroizolații Acoperiș Plat</h3>
-                    <p>Soluții moderne EPDM, membrană bitumată și rășini lichide pentru terase și blocuri.</p>
-                    <ul class="service-list">
-                        <li>✓ Etanșeitate garantată</li>
-                        <li>✓ Rezistență la raze UV</li>
-                        <li>✓ Întreținere facilă</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Calculator Preț Interactiv -->
-    <section id="calculator" class="section calculator-section">
-        <div class="container">
-            <div class="calculator-box">
-                <div class="calculator-header">
-                    <h2>🧮 Calculator Estimativ Acoperiș</h2>
-                    <p>Află în 30 de secunde o estimare de preț pentru lucrarea ta.</p>
-                </div>
-
-                <form id="quoteCalculatorForm" class="calculator-form">
-                    <div class="form-group">
-                        <label for="serviceType">Tipul Lucrării:</label>
-                        <select id="serviceType" class="form-control">
-                            <option value="45">Montaj Acoperiș Nou (~45€ / m²)</option>
-                            <option value="25">Reparație / Recondiționare (~25€ / m²)</option>
-                            <option value="35">Hidroizolație Terasa Plat (~35€ / m²)</option>
-                            <option value="15">Montaj Jgheaburi & Burlane (~15€ / ml)</option>
-                        </select>
+            <div class="container hero-grid">
+                <div class="hero-text-side">
+                    <div class="hero-badge">
+                        <span class="badge-icon">🛡️</span>
+                        <span>Official Irish Roofing Specialists</span>
                     </div>
+                    <h1>Superior Quality Roofing Solutions Across Ireland</h1>
+                    <p class="hero-tagline">"Free quotes by good Inspection" — From urgent leak repairs to Velux skylights, dry verge systems, and full roof replacements.</p>
 
-                    <div class="form-group">
-                        <label for="surfaceArea">Suprafața Estimată (m²): <span id="areaValue">100 m²</span></label>
-                        <input type="range" id="surfaceArea" min="20" max="500" value="100" class="form-range">
-                    </div>
-
-                    <div class="calculator-result">
-                        <span>Preț Estimativ:</span>
-                        <h3 id="estimatedTotal">4,500 €</h3>
-                        <small>*Prețul final se stabilește după inspectarea gratuită la fața locului.</small>
-                    </div>
-
-                    <a href="#contact" class="btn btn-accent btn-full">Solicită Inspectare Gratuită</a>
-                </form>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section id="faq" class="section faq-section">
-        <div class="container">
-            <div class="section-header">
-                <span class="sub-title">Informații Utile</span>
-                <h2>Întrebări Frecvente</h2>
-            </div>
-
-            <div class="faq-accordion">
-                <div class="faq-item active">
-                    <button class="faq-question">Cât durează montajul unui acoperiș nou?</button>
-                    <div class="faq-answer">
-                        <p>Pentru o casă standard de 100-150 m², montajul durează între 3 și 7 zile lucrătoare, în funcție de complexitatea acoperișului și condițiile meteo.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Oferiți garanție pe lucrare?</button>
-                    <div class="faq-answer">
-                        <p>Da! Oferim garanție de până la 10-15 ani pentru manoperă și până la 30-50 de ani pentru materialele folosite (în funcție de producător).</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">Constatarea și deplasarea sunt gratuite?</button>
-                    <div class="faq-answer">
-                        <p>Da, deplasarea pentru inspecție și întocmirea devizului de lucrări este 100% gratuită și fără nicio obligație contractuală.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="section contact-section">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <h2>Contactează S&I Roofing Ltd</h2>
-                    <p>Suntem pregătiți să începem proiectul tău. Scrie-ne un mesaj sau sună-ne direct pentru intervenții urgente.</p>
-
-                    <div class="info-list">
-                        <div class="info-item">
-                            <span class="info-icon">📞</span>
-                            <div>
-                                <strong>Telefon Urgențe:</strong>
-                                <p>+44 7000 000 000 / +40 700 000 000</p>
-                            </div>
+                    <div class="hero-highlights">
+                        <div class="highlight-item">
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>100% Free On-Site Inspection</span>
                         </div>
-
-                        <div class="info-item">
-                            <span class="info-icon">✉️</span>
-                            <div>
-                                <strong>Email:</strong>
-                                <p>contact@siroofingltd.com</p>
-                            </div>
+                        <div class="highlight-item">
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>Up to 25 Years Written Warranty</span>
                         </div>
+                        <div class="highlight-item">
+                            <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            <span>24/7 Emergency Storm Damage Repair</span>
+                        </div>
+                    </div>
 
-                        <div class="info-item">
-                            <span class="info-icon">📍</span>
-                            <div>
-                                <strong>Program:</strong>
-                                <p>Luni - Sâmbătă: 08:00 - 18:00 (Intervenții de urgență 24/7)</p>
+                    <div class="hero-call-now">
+                        <div class="call-avatar">📞</div>
+                        <div>
+                            <span class="call-label">Need Urgent Help? Call Us Now:</span>
+                            <div class="call-numbers">
+                                <a href="tel:+353838680611" class="phone-link">083-8680611</a>
+                                <span class="divider">|</span>
+                                <a href="tel:+353838680611" class="phone-link">+353 83 868 0611</a>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="contact-form-box">
-                    <h3>Trimite-ne un Mesaj</h3>
-                    <form id="contactForm">
-                        <div class="form-group">
-                            <input type="text" placeholder="Numele Tău" required class="form-control">
+                <!-- Quick Lead Form Box -->
+                <div class="hero-form-side">
+                    <div class="quote-card">
+                        <div class="quote-card-header">
+                            <h3>Request a Free Quote</h3>
+                            <p>Fill in your details below for a fast, zero-obligation inspection</p>
                         </div>
-                        <div class="form-group">
-                            <input type="tel" placeholder="Număr de Telefon" required class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <textarea placeholder="Descrie pe scurt ce lucrare ai nevoie..." rows="4" required class="form-control"></textarea>
-                        </div>
-                        <button type="submit" class="btn btn-accent btn-full">Trimite Solicitarea</button>
-                    </form>
+                        <form id="heroLeadForm" class="quote-form">
+                            <div class="form-group">
+                                <label for="clientName">Your Full Name</label>
+                                <input type="text" id="clientName" placeholder="e.g. Patrick O'Connor" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="clientPhone">Phone Number</label>
+                                <input type="tel" id="clientPhone" placeholder="e.g. 083 868 0611" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label for="serviceSelect">Service Required</label>
+                                <select id="serviceSelect" class="form-input">
+                                    <option value="Roof Repair">Emergency Roof Repair</option>
+                                    <option value="Velux Windows">Velux Window Installation</option>
+                                    <option value="Gutters & Soffits">Gutters, Fascia & Soffit</option>
+                                    <option value="Dry Verge System">Dry Verge Systems</option>
+                                    <option value="Attic Insulation">Attic Insulation</option>
+                                    <option value="Full Replacement">New Roof / Re-Roofing</option>
+                                    <option value="Lead Valleys">Lead Valleys Repair</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="clientAddress">Your Location / Eircode</label>
+                                <input type="text" id="clientAddress" placeholder="e.g. Dublin, Cork, Galway, etc." class="form-input">
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block btn-hero-submit">
+                                <span>Get My Free Inspection &amp; Quote</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services-section">
+            <div class="container">
+                <div class="section-title-wrap text-center">
+                    <span class="section-subtitle">OUR SPECIALISATIONS</span>
+                    <h2>Comprehensive Roofing Services in Ireland</h2>
+                    <p class="section-description">From minor maintenance to complete roof builds, we deliver certified craftsmanship backed by top industry standards.</p>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Service 1: Velux Windows -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 12h18"/><path d="M12 3v18"/></svg>
+                        </div>
+                        <h3>Velux Windows</h3>
+                        <p>Professional installation, replacement, and leak repairs for all Velux roof windows. Bring daylight and fresh air into your home.</p>
+                        <a href="#contact" class="service-link">Inquire about Velux &rarr;</a>
+                    </div>
+
+                    <!-- Service 2: Roof Repairs -->
+                    <div class="service-box featured-box">
+                        <div class="box-badge">MOST POPULAR</div>
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                        </div>
+                        <h3>Roof Repairs</h3>
+                        <p>Fast emergency repairs for storm damage, broken slates, tile replacement, ridge tiles re-pointing, and water leak sealing.</p>
+                        <a href="#contact" class="service-link">Book Emergency Repair &rarr;</a>
+                    </div>
+
+                    <!-- Service 3: Gutters -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z"/></svg>
+                        </div>
+                        <h3>Gutters & Downpipes</h3>
+                        <p>Seamless aluminum and PVC guttering supply, cleaning, repairs, and installations to safely direct rainwater away from your property.</p>
+                        <a href="#contact" class="service-link">Get Gutter Quote &rarr;</a>
+                    </div>
+
+                    <!-- Service 4: Dry Verge Systems -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>
+                        </div>
+                        <h3>Dry Verge Systems</h3>
+                        <p>Maintenance-free gable verge caps protecting your roof edge against storm damage and bird nesting without deteriorating mortar.</p>
+                        <a href="#contact" class="service-link">Learn More &rarr;</a>
+                    </div>
+
+                    <!-- Service 5: Roof Cleaning -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+                        </div>
+                        <h3>Roof Cleaning & Treatment</h3>
+                        <p>Soft-wash moss removal, lichen treatment, and protective coating to restore your roof tiles to brand-new appearance.</p>
+                        <a href="#contact" class="service-link">Clean Your Roof &rarr;</a>
+                    </div>
+
+                    <!-- Service 6: UPVC Fascia & Soffit -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                        </div>
+                        <h3>UPVC Fascia & Soffit</h3>
+                        <p>Durable, weatherproof UPVC fascia boards and ventilated soffits designed to protect your roof eaves against rotting timber.</p>
+                        <a href="#contact" class="service-link">View Options &rarr;</a>
+                    </div>
+
+                    <!-- Service 7: Attic Insulations -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                        </div>
+                        <h3>Attic Insulations</h3>
+                        <p>High-density attic thermal insulation to reduce heat loss through your roof and slash home energy heating bills.</p>
+                        <a href="#contact" class="service-link">Save Energy &rarr;</a>
+                    </div>
+
+                    <!-- Service 8: Lead Valleys -->
+                    <div class="service-box">
+                        <div class="service-icon-wrap">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                        </div>
+                        <h3>Lead Valleys & Flashing</h3>
+                        <p>Expert leadwork repairs, chimney lead flashing, and valley gutter replacements to eliminate internal ceiling leaks.</p>
+                        <a href="#contact" class="service-link">Inspect Leadwork &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bento Box Section -->
+        <section id="bento" class="section bento-section">
+            <div class="container">
+                <div class="section-title-wrap text-center">
+                    <span class="section-subtitle">THE S&I DIFFERENCE</span>
+                    <h2>Built on Quality, Trust & Transparency</h2>
+                    <p class="section-description">Here is why homeowners and businesses across Ireland choose S&I Roofing Ltd.</p>
+                </div>
+
+                <div class="bento-grid">
+                    <!-- Bento Item 1: Large Card (Inspection Guarantee) -->
+                    <div class="bento-card bento-span-8 bento-card-primary">
+                        <div class="bento-content">
+                            <span class="bento-tag">FREE INSPECTIONS</span>
+                            <h3>"Free Quotes by Good Inspection"</h3>
+                            <p>We believe in honest, transparent assessments. Our roofing specialists physically inspect your roof, identify hidden leaks or structural wear, and provide a clear written quote with zero hidden charges.</p>
+                            <div class="bento-stat-row">
+                                <div class="bento-mini-stat">
+                                    <span class="stat-num">100%</span>
+                                    <span class="stat-lbl">Free Consultation</span>
+                                </div>
+                                <div class="bento-mini-stat">
+                                    <span class="stat-num">0€</span>
+                                    <span class="stat-lbl">Call-out Fee</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 2: Stat Card -->
+                    <div class="bento-card bento-span-4 bento-card-accent">
+                        <div class="bento-content">
+                            <div class="bento-icon-badge">⚡</div>
+                            <h3>Rapid Response</h3>
+                            <p>Storm leak emergencies? Our mobile crews respond fast to seal roof breaches and prevent home water damage.</p>
+                            <div class="response-time">
+                                <span>Avg. Response:</span>
+                                <strong>Under 2 Hours</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 3: Material Quality -->
+                    <div class="bento-card bento-span-4 bento-card-light">
+                        <div class="bento-content">
+                            <div class="bento-icon-badge">🔨</div>
+                            <h3>Premium Materials</h3>
+                            <p>We source only high-grade slates, Velux fittings, lead sheets, and UV-resistant UPVC systems.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 4: Irish Standard Guarantee -->
+                    <div class="bento-card bento-span-4 bento-card-light">
+                        <div class="bento-content">
+                            <div class="bento-icon-badge">🏆</div>
+                            <h3>Fully Insured &amp; Certified</h3>
+                            <p>Fully compliant with Irish safety standards, public liability insurance, and manufacturer warranties.</p>
+                        </div>
+                    </div>
+
+                    <!-- Bento Item 5: Direct Phone & Email Support -->
+                    <div class="bento-card bento-span-4 bento-card-blue">
+                        <div class="bento-content">
+                            <div class="bento-icon-badge">📞</div>
+                            <h3>Direct Contact</h3>
+                            <p>Speak directly to our master roofer on site:</p>
+                            <a href="tel:+353838680611" class="bento-phone-btn">083-8680611</a>
+                            <span class="bento-email-text">siroofings@gmail.com</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Slider Section -->
+        <section id="portfolio" class="section portfolio-section">
+            <div class="container">
+                <div class="portfolio-header">
+                    <div>
+                        <span class="section-subtitle">PROJECT GALLERY</span>
+                        <h2>Recent Work Across Ireland</h2>
+                    </div>
+                    <div class="slider-controls">
+                        <button class="slider-btn prev-btn" id="prevSlide" aria-label="Previous Project">&larr;</button>
+                        <button class="slider-btn next-btn" id="nextSlide" aria-label="Next Project">&rarr;</button>
+                    </div>
+                </div>
+
+                <div class="portfolio-slider-container">
+                    <div class="portfolio-track" id="portfolioTrack">
+                        <!-- Project 1 -->
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-box">
+                                <img src="assets/portfolio1.jpg" alt="Velux Window & Slate Roof Installation" loading="lazy">
+                                <span class="project-tag">Velux &amp; Slate</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Triple Velux Skylight &amp; Natural Slate Roof</h4>
+                                <p>Complete roof renewal with triple Velux window installation and lead flashings.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 2 -->
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-box">
+                                <img src="assets/portfolio2.jpg" alt="UPVC Fascia, Soffit & Guttering Project" loading="lazy">
+                                <span class="project-tag">Fascia &amp; Gutters</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Seamless Black UPVC Fascia &amp; Downpipe System</h4>
+                                <p>Replaced old rotting timber eaves with modern weather-tight UPVC soffits and rain gutters.</p>
+                            </div>
+                        </div>
+
+                        <!-- Project 3 -->
+                        <div class="portfolio-card">
+                            <div class="portfolio-img-box">
+                                <img src="assets/portfolio3.jpg" alt="Dry Verge System Installation" loading="lazy">
+                                <span class="project-tag">Dry Verge</span>
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>Verge Roof Edge Protection System</h4>
+                                <p>Installed maintenance-free dry verge capping for maximum wind and rain protection.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reviews Section -->
+        <section id="reviews" class="section reviews-section">
+            <div class="container">
+                <div class="section-title-wrap text-center">
+                    <span class="section-subtitle">CUSTOMER TESTIMONIALS</span>
+                    <h2>What Our Clients Say About Us</h2>
+                    <p class="section-description">Real feedback from satisfied homeowners across Ireland.</p>
+                </div>
+
+                <div class="reviews-grid">
+                    <!-- Review 1 -->
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"S&I Roofing Ltd came out the same day when our roof leaked after a heavy storm. They inspected the roof, showed me photos of the broken tiles, and fixed it promptly. Fair pricing and excellent service!"</p>
+                        <div class="reviewer-profile">
+                            <img src="assets/review1.jpg" alt="Sean McCarthy" class="reviewer-img">
+                            <div>
+                                <h4 class="reviewer-name">Sean McCarthy</h4>
+                                <span class="reviewer-location">Dublin, Ireland • Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 2 -->
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"We had two new Velux windows fitted and complete new UPVC gutters installed. The crew was punctual, clean, and very professional. Highly recommend S&I Roofing to anyone in Ireland!"</p>
+                        <div class="reviewer-profile">
+                            <img src="assets/review2.jpg" alt="Niamh O'Reilly" class="reviewer-img">
+                            <div>
+                                <h4 class="reviewer-name">Niamh O'Reilly</h4>
+                                <span class="reviewer-location">Cork, Ireland • Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Review 3 -->
+                    <div class="review-card">
+                        <div class="review-stars">★★★★★</div>
+                        <p class="review-text">"Great experience with their dry verge installation and lead valley repair. They gave us a free quote right after inspection and stuck to the estimate. Zero stress!"</p>
+                        <div class="reviewer-profile">
+                            <div class="avatar-placeholder">PD</div>
+                            <div>
+                                <h4 class="reviewer-name">Patrick Doyle</h4>
+                                <span class="reviewer-location">Galway, Ireland • Verified Client</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section id="faq" class="section faq-section">
+            <div class="container">
+                <div class="section-title-wrap text-center">
+                    <span class="section-subtitle">GOT QUESTIONS?</span>
+                    <h2>Frequently Asked Questions</h2>
+                </div>
+
+                <div class="faq-accordion-container">
+                    <div class="faq-item active">
+                        <button class="faq-header">
+                            <span>How does your free roof inspection work?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-body">
+                            <p>We visit your site in Ireland, inspect your roof slates, tiles, gutters, leadwork, and structure for free, and provide a clear, detailed quote with no hidden fees.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header">
+                            <span>Do you provide roof emergency repairs during bad weather?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-body">
+                            <p>Yes! We offer 24/7 emergency leak callouts across Ireland. Call us at <strong>083-8680611</strong> or <strong>+353 83 868 0611</strong> for fast response.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header">
+                            <span>What are the benefits of Dry Verge Systems?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-body">
+                            <p>Dry verge capping eliminates mortar which cracks and deteriorates over time. It secures roof tiles against gale-force winds and prevents rainwater penetration.</p>
+                        </div>
+                    </div>
+
+                    <div class="faq-item">
+                        <button class="faq-header">
+                            <span>What warranty do you offer on new installations?</span>
+                            <span class="faq-icon">+</span>
+                        </button>
+                        <div class="faq-body">
+                            <p>We provide written warranties up to 25 years on new roofs, Velux windows, lead valleys, and UPVC fascia & soffit installations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final CTA & Contact Section -->
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <div class="contact-card-box">
+                    <div class="contact-info-col">
+                        <h2>Ready to Protect Your Home?</h2>
+                        <p>Contact S&I Roofing Ltd today for your free, no-obligation roof inspection and quote anywhere in Ireland.</p>
+
+                        <div class="contact-details-list">
+                            <div class="contact-detail-item">
+                                <span class="detail-icon">📞</span>
+                                <div>
+                                    <strong>Phone Numbers:</strong>
+                                    <p><a href="tel:+353838680611">083-8680611</a> / <a href="tel:+353838680611">+353 83 868 0611</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon">✉️</span>
+                                <div>
+                                    <strong>Email Address:</strong>
+                                    <p><a href="mailto:siroofings@gmail.com">siroofings@gmail.com</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon">💬</span>
+                                <div>
+                                    <strong>WhatsApp Support:</strong>
+                                    <p><a href="https://wa.me/353838680611" target="_blank" class="whatsapp-link">Chat on WhatsApp &rarr;</a></p>
+                                </div>
+                            </div>
+
+                            <div class="contact-detail-item">
+                                <span class="detail-icon">📍</span>
+                                <div>
+                                    <strong>Coverage:</strong>
+                                    <p>All Ireland 🇮🇪 (Residential &amp; Commercial)</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form-col">
+                        <form id="mainContactForm" class="main-contact-form">
+                            <h3>Send Us a Direct Message</h3>
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" placeholder="Full Name" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone / WhatsApp</label>
+                                <input type="tel" placeholder="Phone Number" required class="form-input">
+                            </div>
+                            <div class="form-group">
+                                <label>Your Message / Project Details</label>
+                                <textarea rows="4" placeholder="Tell us about your roof leak, Velux request, or repair..." required class="form-input"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Send Inquiry Now</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <h3>S&I ROOFING LTD</h3>
-                <p>Calitate, siguranță și durabilitate pentru acoperișul casei tale.</p>
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="footer-logo">S&amp;I ROOFING LTD</div>
+                <p>Top quality roofing services across Ireland. "Free quotes by good Inspection". Fully insured master roofers.</p>
             </div>
-            <p class="copyright">&copy; 2026 S&I Roofing Ltd. Toate drepturile rezervate.</p>
+            <div class="footer-col links-col">
+                <h4>Quick Links</h4>
+                <a href="#hero">Home</a>
+                <a href="#services">Services</a>
+                <a href="#bento">Why Choose Us</a>
+                <a href="#portfolio">Portfolio</a>
+                <a href="#contact">Contact</a>
+            </div>
+            <div class="footer-col services-col">
+                <h4>Services</h4>
+                <span>Velux Windows</span>
+                <span>Roof Repairs</span>
+                <span>Gutters &amp; Downpipes</span>
+                <span>Dry Verge Systems</span>
+                <span>Lead Valleys</span>
+            </div>
+            <div class="footer-col contact-col">
+                <h4>Get in Touch</h4>
+                <p>📞 083-8680611</p>
+                <p>📞 +353 83 868 0611</p>
+                <p>✉️ siroofings@gmail.com</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 S&amp;I Roofing Ltd. All rights reserved. | Professional Irish Roofing Contractors.</p>
+            </div>
         </div>
     </footer>
+
+    <!-- Fixed Floating Call & WhatsApp Buttons -->
+    <div class="fixed-actions">
+        <a href="tel:+353838680611" class="floating-btn call-btn" aria-label="Call Now">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </a>
+        <a href="https://wa.me/353838680611" target="_blank" class="floating-btn wa-btn" aria-label="WhatsApp Us">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981z"/></svg>
+        </a>
+    </div>
 
     <script src="script.js"></script>
 </body>
