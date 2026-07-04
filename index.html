@@ -1,70 +1,264 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ro">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>S&I Roofing Ltd | Professional Roofing Services</title>
-    <meta name="description" content="S&I Roofing Ltd provides top-quality roofing repair, installation, and maintenance services.">
+    <title>S&I Roofing Ltd | Servicii Profesionale de Acoperișuri & Construcții</title>
+    <meta name="description" content="S&I Roofing Ltd oferă servicii de calitate superioară pentru acoperișuri: montaj, reparații urgente, hidroizolații și mansardări. Cere o cotație gratuită!">
     <link rel="stylesheet" href="styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
+
+    <!-- Header Navigation -->
     <header class="header">
         <div class="container nav-container">
             <a href="#" class="logo">
-                <span class="logo-accent">S&I</span> ROOFING LTD
+                <span class="logo-badge">S&I</span>
+                <span class="logo-text">ROOFING <small>LTD</small></span>
             </a>
-            <nav class="nav-menu">
-                <a href="#home">Home</a>
-                <a href="#services">Services</a>
-                <a href="#about">About Us</a>
-                <a href="#contact" class="btn btn-primary">Get a Quote</a>
+
+            <nav class="nav-links" id="navLinks">
+                <a href="#acasa">Acasă</a>
+                <a href="#servicii">Servicii</a>
+                <a href="#despre">Despre Noi</a>
+                <a href="#calculator">Calculator Preț</a>
+                <a href="#faq">Întrebări</a>
+                <a href="#contact" class="btn btn-primary nav-btn">Cere Ofertă</a>
             </nav>
+
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Deschide Meniu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
     </header>
 
-    <main>
-        <section id="home" class="hero">
-            <div class="container hero-content">
-                <span class="badge">Trusted & Reliable Roofing Specialists</span>
-                <h1>High-Quality Roofing Solutions For Your Property</h1>
-                <p>From complete roof replacements to minor repairs, S&I Roofing Ltd delivers craftsmanship that stands the test of time.</p>
-                <div class="hero-actions">
-                    <a href="#contact" class="btn btn-primary btn-large">Request Free Quote</a>
-                    <a href="#services" class="btn btn-secondary btn-large">Our Services</a>
-                </div>
-            </div>
-        </section>
+    <!-- Hero Section -->
+    <section id="acasa" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="hero-badge">⚡ Servicii Rapide & Garanție Extinsă</span>
+                <h1>Construim și Reparăm Acoperișuri Care Rezistă o Viață</h1>
+                <p>Echipa S&I Roofing Ltd îți oferă soluții complete pentru acoperișul tău: de la reparații rapide de urgență până la montaj complet de țiglă, tablă sau hidroizolații.</p>
 
-        <section id="services" class="services">
-            <div class="container">
-                <h2 class="section-title">Our Services</h2>
-                <div class="services-grid">
-                    <div class="service-card">
-                        <div class="icon">🏠</div>
-                        <h3>New Roof Installation</h3>
-                        <p>Durable and aesthetically pleasing roofing solutions tailored to modern standards.</p>
+                <div class="hero-buttons">
+                    <a href="#calculator" class="btn btn-accent btn-lg">Estimează Prețul Acoperișului</a>
+                    <a href="#contact" class="btn btn-outline btn-lg">Contactează Echipa</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="stat-item">
+                        <span class="stat-number">15+</span>
+                        <span class="stat-label">Ani Experiență</span>
                     </div>
-                    <div class="service-card">
-                        <div class="icon">🛠️</div>
-                        <h3>Roof Repairs & Maintenance</h3>
-                        <p>Fast and effective repair services to protect your home from leaks and storm damage.</p>
+                    <div class="stat-item">
+                        <span class="stat-number">450+</span>
+                        <span class="stat-label">Acoperișuri Montate</span>
                     </div>
-                    <div class="service-card">
-                        <div class="icon">🏢</div>
-                        <h3>Flat Roofing</h3>
-                        <p>Specialized high-performance flat roof systems for residential and commercial properties.</p>
+                    <div class="stat-item">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Clienți Mulțumiți</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+        </div>
+    </section>
 
+    <!-- Servicii Section -->
+    <section id="servicii" class="section services-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">Ce Oferim</span>
+                <h2>Serviciile Noastre Profesionale</h2>
+                <p>Acoperim toate cerințele pentru proprietăți rezidențiale și comerciale cu materiale de top.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏗️</div>
+                    <h3>Montaj Acoperiș Nou</h3>
+                    <p>Montaj complet structură din lemn, șarpantă, țiglă ceramică, țiglă metalică sau șindrilă.</p>
+                    <ul class="service-list">
+                        <li>✓ Structură lemn tratat</li>
+                        <li>✓ Izolație termică & fonică</li>
+                        <li>✓ Garanție până la 30 ani</li>
+                    </ul>
+                </div>
+
+                <div class="service-card featured">
+                    <div class="featured-badge">Cel Mai Solicitat</div>
+                    <div class="service-icon">🛠️</div>
+                    <h3>Reparații Urgente Acoperiș</h3>
+                    <p>Intervenție rapidă pentru infiltrări de apă, țigle sparte sau avarii provocate de furtună.</p>
+                    <ul class="service-list">
+                        <li>✓ Diagnosticare gratuită</li>
+                        <li>✓ Reparare hidroizolații</li>
+                        <li>✓ Înlocuire elemente deteriorate</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🌧️</div>
+                    <h3>Sisteme Pluviale (Jgheaburi)</h3>
+                    <p>Montaj și curățare jgheaburi, burlane și elemente de colectare a apei de ploaie.</p>
+                    <ul class="service-list">
+                        <li>✓ Jgheaburi din cupru & aluminiu</li>
+                        <li>✓ Burlane fără îmbinări</li>
+                        <li>✓ Protecție anti-frunze</li>
+                    </ul>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Hidroizolații Acoperiș Plat</h3>
+                    <p>Soluții moderne EPDM, membrană bitumată și rășini lichide pentru terase și blocuri.</p>
+                    <ul class="service-list">
+                        <li>✓ Etanșeitate garantată</li>
+                        <li>✓ Rezistență la raze UV</li>
+                        <li>✓ Întreținere facilă</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Calculator Preț Interactiv -->
+    <section id="calculator" class="section calculator-section">
+        <div class="container">
+            <div class="calculator-box">
+                <div class="calculator-header">
+                    <h2>🧮 Calculator Estimativ Acoperiș</h2>
+                    <p>Află în 30 de secunde o estimare de preț pentru lucrarea ta.</p>
+                </div>
+
+                <form id="quoteCalculatorForm" class="calculator-form">
+                    <div class="form-group">
+                        <label for="serviceType">Tipul Lucrării:</label>
+                        <select id="serviceType" class="form-control">
+                            <option value="45">Montaj Acoperiș Nou (~45€ / m²)</option>
+                            <option value="25">Reparație / Recondiționare (~25€ / m²)</option>
+                            <option value="35">Hidroizolație Terasa Plat (~35€ / m²)</option>
+                            <option value="15">Montaj Jgheaburi & Burlane (~15€ / ml)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="surfaceArea">Suprafața Estimată (m²): <span id="areaValue">100 m²</span></label>
+                        <input type="range" id="surfaceArea" min="20" max="500" value="100" class="form-range">
+                    </div>
+
+                    <div class="calculator-result">
+                        <span>Preț Estimativ:</span>
+                        <h3 id="estimatedTotal">4,500 €</h3>
+                        <small>*Prețul final se stabilește după inspectarea gratuită la fața locului.</small>
+                    </div>
+
+                    <a href="#contact" class="btn btn-accent btn-full">Solicită Inspectare Gratuită</a>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="section faq-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="sub-title">Informații Utile</span>
+                <h2>Întrebări Frecvente</h2>
+            </div>
+
+            <div class="faq-accordion">
+                <div class="faq-item active">
+                    <button class="faq-question">Cât durează montajul unui acoperiș nou?</button>
+                    <div class="faq-answer">
+                        <p>Pentru o casă standard de 100-150 m², montajul durează între 3 și 7 zile lucrătoare, în funcție de complexitatea acoperișului și condițiile meteo.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Oferiți garanție pe lucrare?</button>
+                    <div class="faq-answer">
+                        <p>Da! Oferim garanție de până la 10-15 ani pentru manoperă și până la 30-50 de ani pentru materialele folosite (în funcție de producător).</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button class="faq-question">Constatarea și deplasarea sunt gratuite?</button>
+                    <div class="faq-answer">
+                        <p>Da, deplasarea pentru inspecție și întocmirea devizului de lucrări este 100% gratuită și fără nicio obligație contractuală.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>Contactează S&I Roofing Ltd</h2>
+                    <p>Suntem pregătiți să începem proiectul tău. Scrie-ne un mesaj sau sună-ne direct pentru intervenții urgente.</p>
+
+                    <div class="info-list">
+                        <div class="info-item">
+                            <span class="info-icon">📞</span>
+                            <div>
+                                <strong>Telefon Urgențe:</strong>
+                                <p>+44 7000 000 000 / +40 700 000 000</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">✉️</span>
+                            <div>
+                                <strong>Email:</strong>
+                                <p>contact@siroofingltd.com</p>
+                            </div>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <div>
+                                <strong>Program:</strong>
+                                <p>Luni - Sâmbătă: 08:00 - 18:00 (Intervenții de urgență 24/7)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contact-form-box">
+                    <h3>Trimite-ne un Mesaj</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <input type="text" placeholder="Numele Tău" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Număr de Telefon" required class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <textarea placeholder="Descrie pe scurt ce lucrare ai nevoie..." rows="4" required class="form-control"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-accent btn-full">Trimite Solicitarea</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="footer">
         <div class="container footer-content">
-            <p>&copy; 2026 S&I Roofing Ltd. All rights reserved.</p>
+            <div class="footer-brand">
+                <h3>S&I ROOFING LTD</h3>
+                <p>Calitate, siguranță și durabilitate pentru acoperișul casei tale.</p>
+            </div>
+            <p class="copyright">&copy; 2026 S&I Roofing Ltd. Toate drepturile rezervate.</p>
         </div>
     </footer>
 
