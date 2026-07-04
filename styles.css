@@ -1,6 +1,6 @@
 /* ==========================================================================
    S&I ROOFING LTD - HIGH-CONTRAST EXECUTIVE DESIGN SYSTEM
-   Brand Colors: Royal Blue (#3B52CA), Navy Midnight (#0B1120), Ice Blue (#F0F4FF)
+   Brand Colors: Royal Blue (#3B52CA), Navy Midnight (#0B1120), Ice Blue (#EEF2FF)
    ========================================================================== */
 
 :root {
@@ -60,64 +60,6 @@ body {
     padding: 0 1.5rem;
 }
 
-/* Top Announcement Bar */
-.top-bar {
-    background: var(--navy-dark);
-    color: #CBD5E1;
-    font-size: 0.85rem;
-    padding: 0.6rem 0;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.top-bar-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-}
-
-.top-left {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: #F8FAFC;
-    font-weight: 700;
-}
-
-.pulse-dot {
-    width: 8px;
-    height: 8px;
-    background-color: var(--emerald);
-    border-radius: 50%;
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8);
-    animation: pulse 1.8s infinite;
-}
-
-@keyframes pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.8); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
-}
-
-.top-right {
-    display: flex;
-    gap: 1.25rem;
-    align-items: center;
-}
-
-.top-phone, .top-email {
-    color: #93C5FD !important;
-    text-decoration: none;
-    font-weight: 800;
-    transition: var(--transition);
-}
-
-.top-phone:hover, .top-email:hover {
-    color: #FFFFFF !important;
-    text-decoration: underline;
-}
-
 /* Header & Nav */
 .header {
     background: rgba(255, 255, 255, 0.96);
@@ -125,7 +67,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    padding: 0.8rem 0;
+    padding: 0.9rem 0;
     border-bottom: 1px solid var(--border-color);
 }
 
@@ -367,7 +309,7 @@ body {
     box-shadow: 0 0 0 3px var(--brand-blue-glow);
 }
 
-/* Services Grid & Numbered Badges */
+/* Services Grid */
 .section {
     padding: 6rem 0;
 }
@@ -596,12 +538,6 @@ body {
     display: block;
 }
 
-.bento-subtext {
-    font-size: 0.9rem;
-    font-weight: 700;
-    color: var(--text-muted);
-}
-
 .bento-email-highlight {
     display: block;
     margin-top: 0.4rem;
@@ -609,7 +545,7 @@ body {
     font-weight: 700;
 }
 
-/* Continuous Auto-Scrolling Portfolio Marquee */
+/* Portfolio Marquee */
 .portfolio-top-bar {
     display: flex;
     justify-content: space-between;
@@ -700,9 +636,7 @@ body {
 
 .portfolio-item-card:hover .item-overlay { opacity: 1; }
 
-.item-details {
-    padding: 1.25rem;
-}
+.item-details { padding: 1.25rem; }
 
 .item-tag {
     display: inline-block;
@@ -721,36 +655,55 @@ body {
     color: var(--text-heading);
 }
 
-/* Reviews & FAQ */
+/* Auto-Rotating 5-Second Reviews Carousel System */
 .reviews-section {
     background: var(--bg-light);
 }
 
-.reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+.reviews-carousel-container {
+    max-width: 850px;
+    margin: 0 auto;
+    position: relative;
 }
 
-.review-card {
+.reviews-track {
+    position: relative;
+    min-height: 220px;
+}
+
+.reviews-track .review-card {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     background: var(--bg-card);
-    padding: 2.25rem;
+    padding: 2.5rem;
     border-radius: var(--radius-lg);
     border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-sm);
 }
 
-.review-stars { color: var(--gold); margin-bottom: 1rem; }
+.reviews-track .review-card.active-review {
+    position: relative;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.review-stars { color: var(--gold); margin-bottom: 1rem; font-size: 1.25rem; }
+.review-text { font-size: 1.05rem; font-style: italic; color: var(--text-body); margin-bottom: 1.5rem; line-height: 1.7; }
 
 .reviewer-profile {
     display: flex;
     align-items: center;
     gap: 1rem;
-    margin-top: 1.5rem;
 }
 
 .reviewer-img, .avatar-placeholder {
-    width: 48px;
-    height: 48px;
+    width: 52px;
+    height: 52px;
     border-radius: 50%;
     object-fit: cover;
 }
@@ -758,12 +711,74 @@ body {
 .avatar-placeholder {
     background: var(--brand-blue-soft);
     color: var(--brand-blue);
-    font-weight: 800;
+    font-weight: 900;
+    font-size: 1.1rem;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
+.reviewer-name {
+    font-size: 1.05rem;
+    font-weight: 900;
+    color: var(--text-heading);
+}
+
+.reviewer-location {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    display: block;
+}
+
+.carousel-navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+.carousel-arrow {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    background: var(--bg-card);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-arrow:hover {
+    background: var(--brand-blue);
+    color: #FFFFFF;
+    border-color: var(--brand-blue);
+}
+
+.carousel-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.carousel-dots .dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #CBD5E1;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.carousel-dots .dot.active {
+    background: var(--brand-blue);
+    width: 28px;
+    border-radius: 20px;
+}
+
+/* FAQ Accordion */
 .faq-accordion-container {
     max-width: 800px;
     margin: 0 auto;
@@ -801,7 +816,7 @@ body {
 
 .faq-item.active .faq-body { display: block; }
 
-/* HIGH-CONTRAST Contact Section (FIXES SCREENSHOT CONTRAST) */
+/* Contact Section */
 .contact-section {
     background: #090E1A;
     color: #FFFFFF;
@@ -854,11 +869,8 @@ body {
     margin-bottom: 0.2rem;
 }
 
-.detail-value {
-    font-size: 1.15rem;
-}
+.detail-value { font-size: 1.15rem; }
 
-/* High Contrast Links on Dark Background */
 .contact-highlight-link {
     color: #60A5FA !important;
     text-decoration: none;
@@ -905,9 +917,7 @@ body {
     margin-bottom: 1.5rem;
 }
 
-.contact-form-col label {
-    color: #F8FAFC;
-}
+.contact-form-col label { color: #F8FAFC; }
 
 /* Modals */
 .modal-overlay {
@@ -998,7 +1008,7 @@ body {
 .lightbox-img-box img { width: 100%; height: 100%; object-fit: cover; }
 .lightbox-info { padding: 1.5rem 2rem; }
 
-/* Footer & Legal Links */
+/* Footer */
 .footer {
     background: #050810;
     color: #94A3B8;
@@ -1045,9 +1055,7 @@ body {
     transition: var(--transition);
 }
 
-.footer-links-list a:hover {
-    color: #60A5FA;
-}
+.footer-links-list a:hover { color: #60A5FA; }
 
 .footer-contact-link {
     color: #93C5FD;
@@ -1080,9 +1088,7 @@ body {
     font-weight: 700;
 }
 
-.legal-link:hover {
-    color: #FFFFFF;
-}
+.legal-link:hover { color: #FFFFFF; }
 
 .footer-legal-links {
     display: flex;
@@ -1090,7 +1096,7 @@ body {
     align-items: center;
 }
 
-/* Floating Action Buttons */
+/* Floating Actions */
 .fixed-actions {
     position: fixed;
     bottom: 25px;
@@ -1117,58 +1123,8 @@ body {
 .call-btn { background: var(--brand-blue); }
 .wa-btn { background: #25D366; }
 
-.floating-btn:hover {
-    transform: scale(1.12);
-}
-
+.floating-btn:hover { transform: scale(1.12); }
 .floating-btn svg { width: 28px; height: 28px; }
-
-/* Legal Page Styles */
-.legal-body {
-    background-color: var(--bg-light);
-}
-
-.legal-content {
-    padding: 4rem 1.5rem 6rem;
-}
-
-.legal-box {
-    background: var(--bg-card);
-    padding: 3.5rem 3rem;
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    border: 1px solid var(--border-color);
-}
-
-.legal-box h1 {
-    font-size: 2.5rem;
-    color: var(--text-heading);
-    margin-bottom: 0.5rem;
-}
-
-.legal-updated {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    margin-bottom: 2.5rem;
-}
-
-.legal-section {
-    margin-bottom: 2rem;
-}
-
-.legal-section h2 {
-    font-size: 1.35rem;
-    color: var(--text-heading);
-    margin-bottom: 0.75rem;
-}
-
-.legal-contact-card {
-    background: var(--bg-light);
-    padding: 1.5rem;
-    border-radius: var(--radius-md);
-    margin-top: 1rem;
-    border: 1px solid var(--border-color);
-}
 
 /* Responsive */
 @media (max-width: 992px) {

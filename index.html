@@ -12,28 +12,14 @@
 </head>
 <body>
 
-    <!-- Top Announcement Bar -->
-    <div class="top-bar">
-        <div class="container top-bar-content">
-            <div class="top-left">
-                <span class="pulse-dot"></span>
-                <span>🇮🇪 Serving All Ireland | Emergency Roof Repairs 24/7</span>
-            </div>
-            <div class="top-right">
-                <a href="tel:+353894900015" class="top-phone">📞 089 490 0015</a>
-                <a href="tel:+353894900015" class="top-phone">+353 89 490 0015</a>
-                <a href="mailto:siroofings@gmail.com" class="top-email">✉️ siroofings@gmail.com</a>
-            </div>
-        </div>
-    </div>
-
     <!-- Header Navigation -->
     <header class="header">
         <div class="container nav-container">
             <a href="#" class="logo">
                 <div class="logo-wrapper">
-                    <svg class="logo-icon" viewBox="0 0 200 65" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <text x="5" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-style="italic" font-size="24" fill="#3B52CA" letter-spacing="1">S&amp;I ROOFING LTD</text>
+                    <!-- Expanded viewBox to prevent text clipping -->
+                    <svg class="logo-icon" viewBox="0 0 260 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <text x="5" y="28" font-family="'Plus Jakarta Sans', sans-serif" font-weight="900" font-style="italic" font-size="24" fill="#3B52CA" letter-spacing="0.5">S&amp;I ROOFING LTD</text>
                         <path d="M15 58L45 35L75 58" stroke="#3B52CA" stroke-width="4" stroke-linecap="round"/>
                         <path d="M35 58L85 18L135 58" stroke="#3B52CA" stroke-width="6" stroke-linecap="round"/>
                         <path d="M100 28V15H112V37" fill="#3B52CA"/>
@@ -101,8 +87,6 @@
                         <div>
                             <span class="call-label">Need Urgent Help? Call Us Direct:</span>
                             <div class="call-numbers">
-                                <a href="tel:+353894900015" class="phone-link">089 490 0015</a>
-                                <span class="divider">|</span>
                                 <a href="tel:+353894900015" class="phone-link">+353 89 490 0015</a>
                             </div>
                         </div>
@@ -123,7 +107,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="clientPhone">Phone Number</label>
-                                <input type="tel" id="clientPhone" placeholder="e.g. 089 490 0015" required class="form-input">
+                                <input type="tel" id="clientPhone" placeholder="e.g. +353 89 490 0015" required class="form-input">
                             </div>
                             <div class="form-group">
                                 <label for="serviceSelect">Service Required</label>
@@ -150,7 +134,7 @@
             </div>
         </section>
 
-        <!-- Services Section with Sleek Numbered Badges & Interactive Modals -->
+        <!-- Services Section -->
         <section id="services" class="section services-section">
             <div class="container">
                 <div class="section-title-wrap text-center">
@@ -160,7 +144,6 @@
                 </div>
 
                 <div class="services-grid">
-                    <!-- Service 1: Velux Windows -->
                     <div class="service-box" data-service="velux">
                         <div class="service-number-badge">01</div>
                         <h3>Velux Windows</h3>
@@ -168,7 +151,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 2: Roof Repairs -->
                     <div class="service-box featured-box" data-service="repairs">
                         <div class="box-badge">MOST POPULAR</div>
                         <div class="service-number-badge accent">02</div>
@@ -177,7 +159,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 3: Gutters -->
                     <div class="service-box" data-service="gutters">
                         <div class="service-number-badge">03</div>
                         <h3>Gutters & Downpipes</h3>
@@ -185,7 +166,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 4: Dry Verge Systems -->
                     <div class="service-box" data-service="dryverge">
                         <div class="service-number-badge">04</div>
                         <h3>Dry Verge Systems</h3>
@@ -193,7 +173,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 5: Roof Cleaning -->
                     <div class="service-box" data-service="cleaning">
                         <div class="service-number-badge">05</div>
                         <h3>Roof Moss Cleaning</h3>
@@ -201,7 +180,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 6: UPVC Fascia & Soffit -->
                     <div class="service-box" data-service="fascia">
                         <div class="service-number-badge">06</div>
                         <h3>UPVC Fascia & Soffit</h3>
@@ -209,7 +187,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 7: Attic Insulations -->
                     <div class="service-box" data-service="attic">
                         <div class="service-number-badge">07</div>
                         <h3>Attic Insulation</h3>
@@ -217,7 +194,6 @@
                         <span class="service-link-btn">View Details &rarr;</span>
                     </div>
 
-                    <!-- Service 8: Lead Valleys -->
                     <div class="service-box" data-service="leadvalleys">
                         <div class="service-number-badge">08</div>
                         <h3>Lead Valleys & Flashing</h3>
@@ -238,7 +214,6 @@
                 </div>
 
                 <div class="bento-grid">
-                    <!-- Bento 1: Main Inspection Card (Span 8) -->
                     <div class="bento-card bento-span-8 bento-card-primary">
                         <div class="bento-badge-top">SIGNATURE GUARANTEE</div>
                         <h3>"Free Quotes by Good Inspection"</h3>
@@ -259,7 +234,6 @@
                         </div>
                     </div>
 
-                    <!-- Bento 2: Emergency Response Card (Span 4) -->
                     <div class="bento-card bento-span-4 bento-card-dark">
                         <div class="status-indicator">
                             <span class="live-pulse"></span>
@@ -270,28 +244,24 @@
                         <a href="tel:+353894900015" class="bento-call-btn">Call Emergency Crew &rarr;</a>
                     </div>
 
-                    <!-- Bento 3: Certified Materials (Span 4) -->
                     <div class="bento-card bento-span-4 bento-card-light">
                         <div class="bento-icon-box">🏆</div>
                         <h3>Velux &amp; Premium Materials</h3>
                         <p>We install original Velux roof windows, heavy-duty lead sheets, and UV-resistant UPVC fascia &amp; dry verge systems.</p>
                     </div>
 
-                    <!-- Bento 4: Fully Insured (Span 4) -->
                     <div class="bento-card bento-span-4 bento-card-light">
                         <div class="bento-icon-box">🛡️</div>
                         <h3>Fully Insured Master Roofers</h3>
                         <p>Complete peace of mind with full Irish public liability insurance and safety compliance on every job site.</p>
                     </div>
 
-                    <!-- Bento 5: Direct Contact Card (Span 4) -->
                     <div class="bento-card bento-span-4 bento-card-blue">
                         <div class="bento-icon-box">📲</div>
                         <h3>Direct Phone &amp; WhatsApp</h3>
                         <p>Speak directly to our lead roofing contractor:</p>
                         <div class="bento-contacts">
                             <a href="tel:+353894900015" class="bento-phone-highlight">+353 89 490 0015</a>
-                            <span class="bento-subtext">089 490 0015</span>
                             <small class="bento-email-highlight">siroofings@gmail.com</small>
                         </div>
                     </div>
@@ -314,10 +284,8 @@
                     </div>
                 </div>
 
-                <!-- Continuous Auto-Scroll Carousel Track -->
                 <div class="marquee-viewport" id="marqueeViewport">
                     <div class="marquee-track" id="marqueeTrack">
-                        <!-- Project 1 -->
                         <div class="portfolio-item-card" data-img="assets/portfolio1.jpg" data-title="Triple Velux Skylight & Slate Roof" data-desc="Complete roof renewal in Ireland with triple Velux roof window installation and custom lead flashings.">
                             <div class="item-img-box">
                                 <img src="assets/portfolio1.jpg" alt="Velux Skylight Project" loading="lazy">
@@ -329,7 +297,6 @@
                             </div>
                         </div>
 
-                        <!-- Project 2 -->
                         <div class="portfolio-item-card" data-img="assets/portfolio2.jpg" data-title="Black UPVC Fascia & Gutters" data-desc="Replaced rotting wooden fascia eaves with maintenance-free black UPVC fascia, soffits, and rainwater downpipes.">
                             <div class="item-img-box">
                                 <img src="assets/portfolio2.jpg" alt="UPVC Gutters Project" loading="lazy">
@@ -341,7 +308,6 @@
                             </div>
                         </div>
 
-                        <!-- Project 3 -->
                         <div class="portfolio-item-card" data-img="assets/portfolio3.jpg" data-title="Gable End Dry Verge Capping" data-desc="Installed grey dry verge roof capping system for weather protection against wind-blown rain and nesting birds.">
                             <div class="item-img-box">
                                 <img src="assets/portfolio3.jpg" alt="Dry Verge Project" loading="lazy">
@@ -353,7 +319,6 @@
                             </div>
                         </div>
 
-                        <!-- Project 4 -->
                         <div class="portfolio-item-card" data-img="assets/portfolio4.jpg" data-title="Lead Valley Flashing Repair" data-desc="Replaced cracked lead valley gutter with high-grade sheet lead to permanently resolve roof junction leak.">
                             <div class="item-img-box">
                                 <img src="assets/portfolio4.jpg" alt="Lead Valley Repair Project" loading="lazy">
@@ -365,7 +330,6 @@
                             </div>
                         </div>
 
-                        <!-- Project 5 -->
                         <div class="portfolio-item-card" data-img="assets/portfolio5.jpg" data-title="Soft-Wash Moss Removal" data-desc="Thorough roof moss cleaning, biocide treatment, and tile sealing for a clean, brand-new appearance.">
                             <div class="item-img-box">
                                 <img src="assets/portfolio5.jpg" alt="Roof Cleaning Project" loading="lazy">
@@ -381,49 +345,94 @@
             </div>
         </section>
 
-        <!-- Reviews Section -->
+        <!-- Auto-Rotating 5-Second Reviews Carousel -->
         <section id="reviews" class="section reviews-section">
             <div class="container">
                 <div class="section-title-wrap text-center">
                     <span class="section-subtitle">VERIFIED TESTIMONIALS</span>
                     <h2>What Irish Homeowners Say</h2>
+                    <p class="section-description">Auto-rotates every 5 seconds. Hover over any review to pause.</p>
                 </div>
 
-                <div class="reviews-grid">
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"S&I Roofing Ltd came out the same day when our roof leaked after a heavy storm in Dublin. They inspected the roof, showed me photos of broken tiles, and fixed it promptly. Fair pricing and top service!"</p>
-                        <div class="reviewer-profile">
-                            <img src="assets/review1.jpg" alt="Sean McCarthy" class="reviewer-img">
-                            <div>
-                                <h4 class="reviewer-name">Sean McCarthy</h4>
-                                <span class="reviewer-location">Dublin, Ireland • Verified Client</span>
+                <div class="reviews-carousel-container" id="reviewsCarousel">
+                    <div class="reviews-track" id="reviewsTrack">
+                        <!-- Review 1 (With Photo) -->
+                        <div class="review-card active-review">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"S&I Roofing Ltd came out the same day when our roof leaked after a heavy storm in Dublin. They inspected the roof, showed me photos of broken tiles, and fixed it promptly. Fair pricing and top service!"</p>
+                            <div class="reviewer-profile">
+                                <img src="assets/review1.jpg" alt="Sean McCarthy" class="reviewer-img">
+                                <div>
+                                    <h4 class="reviewer-name">Sean McCarthy</h4>
+                                    <span class="reviewer-location">Dublin, Ireland • Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 2 (With Photo) -->
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"We had two new Velux windows fitted and new UPVC gutters installed. The crew was punctual, clean, and very professional. Highly recommend S&I Roofing to anyone in Ireland!"</p>
+                            <div class="reviewer-profile">
+                                <img src="assets/review2.jpg" alt="Niamh O'Reilly" class="reviewer-img">
+                                <div>
+                                    <h4 class="reviewer-name">Niamh O'Reilly</h4>
+                                    <span class="reviewer-location">Cork, Ireland • Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 3 (With Photo) -->
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Outstanding job repairing our lead valley and installing dry verge caps on our bungalow in Limerick. Transparent pricing with zero surprises. Will definitely use them again."</p>
+                            <div class="reviewer-profile">
+                                <img src="assets/review3.jpg" alt="Liam Walsh" class="reviewer-img">
+                                <div>
+                                    <h4 class="reviewer-name">Liam Walsh</h4>
+                                    <span class="reviewer-location">Limerick, Ireland • Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 4 (With Photo) -->
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Very reliable team. They cleaned all moss off our roof tiles, replaced three broken slates, and sealed the chimney flashing. Our house looks brand new!"</p>
+                            <div class="reviewer-profile">
+                                <img src="assets/review4.jpg" alt="Siobhán Dempsey" class="reviewer-img">
+                                <div>
+                                    <h4 class="reviewer-name">Siobhán Dempsey</h4>
+                                    <span class="reviewer-location">Waterford, Ireland • Verified Client</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Review 5 (ONLY ONE WITHOUT PHOTO - INITIAL PLACEHOLDER) -->
+                        <div class="review-card">
+                            <div class="review-stars">★★★★★</div>
+                            <p class="review-text">"Great experience with their dry verge installation and lead valley repair. They gave us a free quote right after inspection and stuck to the estimate. Zero stress!"</p>
+                            <div class="reviewer-profile">
+                                <div class="avatar-placeholder">PD</div>
+                                <div>
+                                    <h4 class="reviewer-name">Patrick Doyle</h4>
+                                    <span class="reviewer-location">Galway, Ireland • Verified Client</span>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"We had two new Velux windows fitted and new UPVC gutters installed. The crew was punctual, clean, and very professional. Highly recommend S&I Roofing to anyone in Ireland!"</p>
-                        <div class="reviewer-profile">
-                            <img src="assets/review2.jpg" alt="Niamh O'Reilly" class="reviewer-img">
-                            <div>
-                                <h4 class="reviewer-name">Niamh O'Reilly</h4>
-                                <span class="reviewer-location">Cork, Ireland • Verified Client</span>
-                            </div>
+                    <!-- Carousel Indicators & Controls -->
+                    <div class="carousel-navigation">
+                        <button class="carousel-arrow" id="prevReview" aria-label="Previous Review">&larr;</button>
+                        <div class="carousel-dots" id="carouselDots">
+                            <span class="dot active" data-slide="0"></span>
+                            <span class="dot" data-slide="1"></span>
+                            <span class="dot" data-slide="2"></span>
+                            <span class="dot" data-slide="3"></span>
+                            <span class="dot" data-slide="4"></span>
                         </div>
-                    </div>
-
-                    <div class="review-card">
-                        <div class="review-stars">★★★★★</div>
-                        <p class="review-text">"Great experience with their dry verge installation and lead valley repair. They gave us a free quote right after inspection and stuck to the estimate. Zero stress!"</p>
-                        <div class="reviewer-profile">
-                            <div class="avatar-placeholder">PD</div>
-                            <div>
-                                <h4 class="reviewer-name">Patrick Doyle</h4>
-                                <span class="reviewer-location">Galway, Ireland • Verified Client</span>
-                            </div>
-                        </div>
+                        <button class="carousel-arrow" id="nextReview" aria-label="Next Review">&rarr;</button>
                     </div>
                 </div>
             </div>
@@ -454,7 +463,7 @@
                             <span class="faq-icon">+</span>
                         </button>
                         <div class="faq-body">
-                            <p>Yes! We offer 24/7 emergency leak callouts across Ireland. Call us at <strong>089 490 0015</strong> or <strong>+353 89 490 0015</strong> for fast response.</p>
+                            <p>Yes! We offer 24/7 emergency leak callouts across Ireland. Call us at <strong>+353 89 490 0015</strong> for fast response.</p>
                         </div>
                     </div>
 
@@ -493,10 +502,9 @@
                             <div class="contact-detail-item">
                                 <span class="detail-icon">📞</span>
                                 <div>
-                                    <strong class="detail-title">Direct Phone Numbers:</strong>
+                                    <strong class="detail-title">Direct Phone Number:</strong>
                                     <p class="detail-value">
-                                        <a href="tel:+353894900015" class="contact-highlight-link">+353 89 490 0015</a> / 
-                                        <a href="tel:+353894900015" class="contact-highlight-link">089 490 0015</a>
+                                        <a href="tel:+353894900015" class="contact-highlight-link">+353 89 490 0015</a>
                                     </p>
                                 </div>
                             </div>
@@ -540,7 +548,7 @@
                             </div>
                             <div class="form-group">
                                 <label>Phone / WhatsApp Number</label>
-                                <input type="tel" placeholder="e.g. 089 490 0015" required class="form-input">
+                                <input type="tel" placeholder="e.g. +353 89 490 0015" required class="form-input">
                             </div>
                             <div class="form-group">
                                 <label>Your Message / Project Details</label>
@@ -584,7 +592,6 @@
             <div class="footer-col contact-col">
                 <h4>Get in Touch</h4>
                 <p>📞 <a href="tel:+353894900015" class="footer-contact-link">+353 89 490 0015</a></p>
-                <p>📞 <a href="tel:+353894900015" class="footer-contact-link">089 490 0015</a></p>
                 <p>✉️ <a href="mailto:siroofings@gmail.com" class="footer-contact-link">siroofings@gmail.com</a></p>
             </div>
         </div>

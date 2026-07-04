@@ -137,7 +137,6 @@ document.addEventListener('DOMContentLoaded', () => {
             marqueeViewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
         });
 
-        // Continuous Auto-scroll timer
         let autoScrollTimer = setInterval(() => {
             if (marqueeViewport.scrollLeft + marqueeViewport.clientWidth >= marqueeViewport.scrollWidth - 10) {
                 marqueeViewport.scrollTo({ left: 0, behavior: 'smooth' });
@@ -158,7 +157,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lightbox Modal Trigger for Portfolio Items
+    // Lightbox Modal Trigger
     document.querySelectorAll('.portfolio-item-card').forEach(card => {
         card.addEventListener('click', () => {
             const imgSrc = card.getAttribute('data-img');
@@ -178,12 +177,89 @@ document.addEventListener('DOMContentLoaded', () => {
         closeLightboxModal.addEventListener('click', () => lightboxModal.classList.remove('active'));
     }
 
+    // 3. Auto-Rotating 5-Second Reviews Carousel
+    const reviewsTrack = document.getElementById('reviewsTrack');
+    const reviewCards = reviewsTrack ? reviewsTrack.querySelectorAll('.review-card') : [];
+    const dots = document.querySelectorAll('.carousel-dots .dot');
+    const prevReviewBtn = document.getElementById('prevReview');
+    const nextReviewBtn = document.getElementById('nextReview');
+    let currentReviewIndex = 0;
+    let reviewInterval;
+
+    function showReview(index) {
+        if (!reviewCards.length) return;
+        if (index < 0) index = reviewCards.length - 1;
+        if (index >= reviewCards.length) index = 0;
+        
+        currentReviewIndex = index;
+        reviewCards.forEach((card, i) => {
+            if (i === currentReviewIndex) {
+                card.classList.add('active-review');
+            } else {
+                card.classList.remove('active-review');
+            }
+        });
+
+        dots.forEach((dot, i) => {
+            if (i === currentReviewIndex) {
+                dot.classList.add('active');
+            } else {
+                dot.classList.remove('active');
+            }
+        });
+    }
+
+    function startReviewAutoRotate() {
+        reviewInterval = setInterval(() => {
+            showReview(currentReviewIndex + 1);
+        }, 5000); // 5 Seconds exact rotation
+    }
+
+    function stopReviewAutoRotate() {
+        clearInterval(reviewInterval);
+    }
+
+    if (reviewCards.length) {
+        showReview(0);
+        startReviewAutoRotate();
+
+        if (prevReviewBtn) {
+            prevReviewBtn.addEventListener('click', () => {
+                stopReviewAutoRotate();
+                showReview(currentReviewIndex - 1);
+                startReviewAutoRotate();
+            });
+        }
+
+        if (nextReviewBtn) {
+            nextReviewBtn.addEventListener('click', () => {
+                stopReviewAutoRotate();
+                showReview(currentReviewIndex + 1);
+                startReviewAutoRotate();
+            });
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                stopReviewAutoRotate();
+                showReview(i);
+                startReviewAutoRotate();
+            });
+        });
+
+        if (reviewsTrack) {
+            reviewsTrack.addEventListener('mouseenter', stopReviewAutoRotate);
+            reviewsTrack.addEventListener('mouseleave', startReviewAutoRotate);
+        }
+    }
+
+    // Modal overlay click to close
     window.addEventListener('click', (e) => {
         if (e.target === serviceModal) serviceModal.classList.remove('active');
         if (e.target === lightboxModal) lightboxModal.classList.remove('active');
     });
 
-    // 3. Mobile Navigation Toggle
+    // 4. Mobile Navigation Toggle
     const mobileToggle = document.getElementById('mobileToggle');
     const navMenu = document.getElementById('navMenu');
 
@@ -204,7 +280,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 4. FAQ Accordion
+    // 5. FAQ Accordion
     document.querySelectorAll('.faq-item').forEach(item => {
         const header = item.querySelector('.faq-header');
         header.addEventListener('click', () => {
@@ -214,7 +290,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Form Submissions
+    // 6. Form Submissions
     const heroLeadForm = document.getElementById('heroLeadForm');
     if (heroLeadForm) {
         heroLeadForm.addEventListener('submit', (e) => {
