@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Service Modals Data & Logic
     const serviceData = {
         velux: {
+            number: "01",
             title: "Velux Windows Installation & Leak Repairs",
             description: "Transform your home with natural daylight and ventilation. S&I Roofing Ltd is certified to supply, install, and seal all Velux roof windows across Ireland.",
             features: [
@@ -9,10 +10,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Replacement of old leaking or fogged roof skylights",
                 "✓ Thermal double/triple glazing insulation",
                 "✓ 15 Year written installation guarantee"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><rect x="10" y="10" width="28" height="28" rx="4" stroke="#3B52CA" stroke-width="3" fill="#FFFFFF"/><path d="M10 24H38M24 10V38" stroke="#3B52CA" stroke-width="3"/><circle cx="17" cy="17" r="2" fill="#F59E0B"/></svg>`
+            ]
         },
         repairs: {
+            number: "02",
             title: "Emergency Roof Leak & Storm Damage Repairs",
             description: "Fast mobile repair crews dispatched across Ireland for storm damage, broken slates, ridge tile re-pointing, and emergency water leaks.",
             features: [
@@ -20,10 +21,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Slate, tile, and ridge tile replacements",
                 "✓ Chimney lead flashing leak sealing",
                 "✓ 100% Free on-site inspection & photo diagnostic"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#3B52CA"/><path d="M12 28L24 14L36 28V36H12V28Z" fill="#FFFFFF"/><path d="M20 28H28V36H20V28Z" fill="#F59E0B"/></svg>`
+            ]
         },
         gutters: {
+            number: "03",
             title: "Gutters, Downpipes & Rainwater Systems",
             description: "Complete seamless aluminum and UPVC gutter supply, cleaning, leak fixing, and downpipe installations to safely direct rainwater.",
             features: [
@@ -31,10 +32,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Anti-clog leaf guards & hopper boxes",
                 "✓ Gutter cleaning, realigning, and leak sealing",
                 "✓ Wide range of colors (Black, White, Brown, Anthracite)"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><path d="M12 18H36C36 26 30 32 24 32C18 32 12 26 12 18Z" fill="#3B52CA"/><path d="M24 32V38M20 38H28" stroke="#3B52CA" stroke-width="3" stroke-linecap="round"/></svg>`
+            ]
         },
         dryverge: {
+            number: "04",
             title: "Dry Verge Roof Edge Protection Systems",
             description: "Upgrade your roof with maintenance-free gable dry verge caps that lock roof tiles in place against storm winds without deteriorating mortar.",
             features: [
@@ -42,10 +43,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Weather-tight seal against driven wind and rain",
                 "✓ Prevents birds and pests from nesting under eaves",
                 "✓ 20 Year maintenance-free durability"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><path d="M14 14L24 24L34 14M14 24L24 34L34 24" stroke="#3B52CA" stroke-width="4" stroke-linecap="round"/></svg>`
+            ]
         },
         cleaning: {
+            number: "05",
             title: "Soft-Wash Roof Moss Removal & Protective Coating",
             description: "Restore your roof's original beauty and extend tile lifespan with professional moss scraping, biocide treatment, and waterproof sealing.",
             features: [
@@ -53,10 +54,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Fungicidal biocide treatment against regrowth",
                 "✓ Waterproof protective tile sealing coating",
                 "✓ Cleans gutters & surrounding property post-service"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><path d="M24 10C24 10 14 22 14 28C14 33.5228 18.4772 38 24 38C29.5228 38 34 33.5228 34 28C34 22 24 10 24 10Z" fill="#3B52CA"/></svg>`
+            ]
         },
         fascia: {
+            number: "06",
             title: "UPVC Fascia & Soffit Replacement",
             description: "Replace old rotting timber eave boards with durable, weather-resistant UPVC fascia and ventilated soffits.",
             features: [
@@ -64,10 +65,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Ventilated soffits to prevent attic condensation",
                 "✓ Rot-proof and termite-resistant materials",
                 "✓ Clean architectural finish for your roof edges"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><rect x="10" y="16" width="28" height="16" rx="3" fill="#3B52CA"/><line x1="14" y1="24" x2="34" y2="24" stroke="#FFFFFF" stroke-width="2"/></svg>`
+            ]
         },
         attic: {
+            number: "07",
             title: "Attic Thermal Insulation Upgrades",
             description: "Up to 35% of home heat escapes through uninsulated roofs. Our high-density attic insulation slashes heating bills and boosts home comfort.",
             features: [
@@ -75,10 +76,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Cold water tank & pipe lagging included",
                 "✓ SEAI energy efficiency compliant materials",
                 "✓ Immediate reduction in winter home heating costs"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><path d="M12 34V20L24 10L36 20V34H12Z" stroke="#3B52CA" stroke-width="3" fill="#FFFFFF"/><path d="M16 28C16 28 20 24 24 28C28 32 32 28 32 28" stroke="#F59E0B" stroke-width="3"/></svg>`
+            ]
         },
         leadvalleys: {
+            number: "08",
             title: "Lead Valleys & Chimney Flashing Repairs",
             description: "Master leadwork craftsmanship. We repair, weld, and replace lead valley gutters and chimney apron flashings to stop internal ceiling leaks.",
             features: [
@@ -86,19 +87,17 @@ document.addEventListener('DOMContentLoaded', () => {
                 "✓ Chimney step flashing & back gutter renewal",
                 "✓ Waterproof lead valley gutter replacements",
                 "✓ 25 Year warranty on all leadwork projects"
-            ],
-            icon: `<svg viewBox="0 0 48 48" fill="none"><rect width="48" height="48" rx="12" fill="#EEF2FF"/><polygon points="24,10 38,38 10,38" stroke="#3B52CA" stroke-width="3" fill="#FFFFFF"/><line x1="24" y1="10" x2="24" y2="38" stroke="#3B52CA" stroke-width="3"/></svg>`
+            ]
         }
     };
 
-    // Service Modals Logic
+    // Service Modal Trigger
     const serviceModal = document.getElementById('serviceModal');
     const closeServiceModal = document.getElementById('closeServiceModal');
     const modalTitle = document.getElementById('modalTitle');
     const modalDescription = document.getElementById('modalDescription');
     const modalFeatureList = document.getElementById('modalFeatureList');
-    const modalIcon = document.getElementById('modalIcon');
-    const modalCta = document.getElementById('modalCta');
+    const modalNumberBadge = document.getElementById('modalNumberBadge');
 
     document.querySelectorAll('.service-box').forEach(box => {
         box.addEventListener('click', () => {
@@ -107,7 +106,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data && serviceModal) {
                 modalTitle.textContent = data.title;
                 modalDescription.textContent = data.description;
-                modalIcon.innerHTML = data.icon;
+                if (modalNumberBadge) modalNumberBadge.textContent = data.number;
                 modalFeatureList.innerHTML = data.features.map(f => `<li>${f}</li>`).join('');
                 serviceModal.classList.add('active');
             }
@@ -115,44 +114,52 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (closeServiceModal) {
-        closeServiceModal.addEventListener('click', () => {
-            serviceModal.classList.remove('active');
-        });
+        closeServiceModal.addEventListener('click', () => serviceModal.classList.remove('active'));
     }
 
-    if (modalCta) {
-        modalCta.addEventListener('click', () => {
-            serviceModal.classList.remove('active');
-        });
-    }
-
-    // 2. Portfolio Gallery Filter & Lightbox
-    const filterBtns = document.querySelectorAll('.filter-btn');
-    const galleryCards = document.querySelectorAll('.gallery-card');
+    // 2. Portfolio Marquee Carousel & Lightbox
+    const marqueeViewport = document.getElementById('marqueeViewport');
+    const prevMarquee = document.getElementById('prevMarquee');
+    const nextMarquee = document.getElementById('nextMarquee');
     const lightboxModal = document.getElementById('lightboxModal');
     const closeLightboxModal = document.getElementById('closeLightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxDesc = document.getElementById('lightboxDesc');
 
-    filterBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            filterBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-
-            const filter = btn.getAttribute('data-filter');
-            galleryCards.forEach(card => {
-                const category = card.getAttribute('data-category');
-                if (filter === 'all' || category === filter) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
+    if (marqueeViewport && prevMarquee && nextMarquee) {
+        const scrollAmount = 380;
+        nextMarquee.addEventListener('click', () => {
+            marqueeViewport.scrollBy({ left: scrollAmount, behavior: 'smooth' });
         });
-    });
 
-    galleryCards.forEach(card => {
+        prevMarquee.addEventListener('click', () => {
+            marqueeViewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+        });
+
+        // Continuous Auto-scroll timer
+        let autoScrollTimer = setInterval(() => {
+            if (marqueeViewport.scrollLeft + marqueeViewport.clientWidth >= marqueeViewport.scrollWidth - 10) {
+                marqueeViewport.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                marqueeViewport.scrollBy({ left: 2, behavior: 'auto' });
+            }
+        }, 30);
+
+        marqueeViewport.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
+        marqueeViewport.addEventListener('mouseleave', () => {
+            autoScrollTimer = setInterval(() => {
+                if (marqueeViewport.scrollLeft + marqueeViewport.clientWidth >= marqueeViewport.scrollWidth - 10) {
+                    marqueeViewport.scrollTo({ left: 0, behavior: 'smooth' });
+                } else {
+                    marqueeViewport.scrollBy({ left: 2, behavior: 'auto' });
+                }
+            }, 30);
+        });
+    }
+
+    // Lightbox Modal Trigger for Portfolio Items
+    document.querySelectorAll('.portfolio-item-card').forEach(card => {
         card.addEventListener('click', () => {
             const imgSrc = card.getAttribute('data-img');
             const title = card.getAttribute('data-title');
@@ -168,12 +175,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     if (closeLightboxModal) {
-        closeLightboxModal.addEventListener('click', () => {
-            lightboxModal.classList.remove('active');
-        });
+        closeLightboxModal.addEventListener('click', () => lightboxModal.classList.remove('active'));
     }
 
-    // Close Modals on Overlay Click
     window.addEventListener('click', (e) => {
         if (e.target === serviceModal) serviceModal.classList.remove('active');
         if (e.target === lightboxModal) lightboxModal.classList.remove('active');
@@ -217,7 +221,7 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
             const name = document.getElementById('clientName').value;
             const phone = document.getElementById('clientPhone').value;
-            alert(`Thank you ${name}! Your free inspection request has been received. Our team will call you at ${phone} shortly.`);
+            alert(`Thank you ${name}! Your free inspection request has been received. Our team will call you back at ${phone} shortly.`);
             heroLeadForm.reset();
         });
     }
