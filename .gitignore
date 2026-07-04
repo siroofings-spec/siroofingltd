@@ -1,0 +1,9 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node dependencies (dacă folosiți pe viitor)
+node_modules/
+.env
+dist/
+build/
