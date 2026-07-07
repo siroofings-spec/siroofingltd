@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', () => {
         leadvalleys: {
             number: "08",
             title: "Lead Valleys & Chimney Flashing Repairs",
-            description: "Master leadwork craftsmanship. We repair, weld, and replace lead valley gutters and chimney apron flashings to stop internal ceiling leaks.",
+            description: "Master leadwork craftsmanship. We repair, weld, and replace lead valley gutters and chimney apron flashings to stop internal water leaks.",
             features: [
                 "✓ Code 4 & Code 5 sheet lead fabrication",
                 "✓ Chimney step flashing & back gutter renewal",
@@ -117,52 +117,18 @@ document.addEventListener('DOMContentLoaded', () => {
         closeServiceModal.addEventListener('click', () => serviceModal.classList.remove('active'));
     }
 
-    // 2. Portfolio Marquee Carousel & Lightbox
-    const marqueeViewport = document.getElementById('marqueeViewport');
-    const prevMarquee = document.getElementById('prevMarquee');
-    const nextMarquee = document.getElementById('nextMarquee');
+    // Lightbox modal elements
     const lightboxModal = document.getElementById('lightboxModal');
     const closeLightboxModal = document.getElementById('closeLightboxModal');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxTitle = document.getElementById('lightboxTitle');
     const lightboxDesc = document.getElementById('lightboxDesc');
 
-    if (marqueeViewport && prevMarquee && nextMarquee) {
-        const scrollAmount = 380;
-        nextMarquee.addEventListener('click', () => {
-            marqueeViewport.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-        });
-
-        prevMarquee.addEventListener('click', () => {
-            marqueeViewport.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-        });
-
-        let autoScrollTimer = setInterval(() => {
-            if (marqueeViewport.scrollLeft + marqueeViewport.clientWidth >= marqueeViewport.scrollWidth - 10) {
-                marqueeViewport.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                marqueeViewport.scrollBy({ left: 2, behavior: 'auto' });
-            }
-        }, 30);
-
-        marqueeViewport.addEventListener('mouseenter', () => clearInterval(autoScrollTimer));
-        marqueeViewport.addEventListener('mouseleave', () => {
-            autoScrollTimer = setInterval(() => {
-                if (marqueeViewport.scrollLeft + marqueeViewport.clientWidth >= marqueeViewport.scrollWidth - 10) {
-                    marqueeViewport.scrollTo({ left: 0, behavior: 'smooth' });
-                } else {
-                    marqueeViewport.scrollBy({ left: 2, behavior: 'auto' });
-                }
-            }, 30);
-        });
-    }
-
-    // Lightbox Modal Trigger
-    document.querySelectorAll('.portfolio-item-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const imgSrc = card.getAttribute('data-img');
-            const title = card.getAttribute('data-title');
-            const desc = card.getAttribute('data-desc');
+    function bindLightbox(element) {
+        element.addEventListener('click', () => {
+            const imgSrc = element.getAttribute('data-img');
+            const title = element.getAttribute('data-title');
+            const desc = element.getAttribute('data-desc');
 
             if (lightboxModal && lightboxImage) {
                 lightboxImage.src = imgSrc;
@@ -171,10 +137,63 @@ document.addEventListener('DOMContentLoaded', () => {
                 lightboxModal.classList.add('active');
             }
         });
-    });
+    }
 
     if (closeLightboxModal) {
         closeLightboxModal.addEventListener('click', () => lightboxModal.classList.remove('active'));
+    }
+
+    // Bind original cards
+    document.querySelectorAll('.portfolio-item-card').forEach(card => {
+        bindLightbox(card);
+    });
+
+    // 2. Continuous Smooth Auto-Scrolling Portfolio Marquee (requestAnimationFrame)
+    const marqueeViewport = document.getElementById('marqueeViewport');
+    const marqueeTrack = document.getElementById('marqueeTrack');
+    const prevMarquee = document.getElementById('prevMarquee');
+    const nextMarquee = document.getElementById('nextMarquee');
+
+    if (marqueeViewport && marqueeTrack) {
+        // Clone elements for seamless infinite scrolling
+        const originalCards = Array.from(marqueeTrack.children);
+        originalCards.forEach(card => {
+            const clone = card.cloneNode(true);
+            bindLightbox(clone);
+            marqueeTrack.appendChild(clone);
+        });
+
+        let isHovered = false;
+        const scrollSpeed = 0.8; // Pixels per frame (perfectly smooth, low-CPU speed)
+        
+        function scrollMarquee() {
+            if (!isHovered) {
+                marqueeViewport.scrollLeft += scrollSpeed;
+                // If scrolled past half (which is the original set's width)
+                if (marqueeViewport.scrollLeft >= (marqueeViewport.scrollWidth / 2)) {
+                    marqueeViewport.scrollLeft = 0;
+                }
+            }
+            requestAnimationFrame(scrollMarquee);
+        }
+
+        // Initialize smooth scroll loop
+        requestAnimationFrame(scrollMarquee);
+
+        // Hover handlers to pause
+        marqueeViewport.addEventListener('mouseenter', () => isHovered = true);
+        marqueeViewport.addEventListener('mouseleave', () => isHovered = false);
+
+        // Button navigation controls
+        if (nextMarquee && prevMarquee) {
+            nextMarquee.addEventListener('click', () => {
+                marqueeViewport.scrollBy({ left: 380, behavior: 'smooth' });
+            });
+
+            prevMarquee.addEventListener('click', () => {
+                marqueeViewport.scrollBy({ left: -380, behavior: 'smooth' });
+            });
+        }
     }
 
     // 3. Auto-Rotating 5-Second Reviews Carousel
@@ -273,9 +292,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 navMenu.style.top = '100%';
                 navMenu.style.left = '0';
                 navMenu.style.width = '100%';
-                navMenu.style.background = '#FFFFFF';
+                navMenu.style.background = '#0F172A';
                 navMenu.style.padding = '1.5rem';
-                navMenu.style.boxShadow = '0 10px 25px rgba(0,0,0,0.1)';
+                navMenu.style.boxShadow = '0 10px 25px rgba(0,0,0,0.3)';
             }
         });
     }
@@ -309,5 +328,27 @@ document.addEventListener('DOMContentLoaded', () => {
             alert('Thank you for contacting S&I Roofing Ltd! We will respond promptly.');
             mainContactForm.reset();
         });
+    }
+
+    // 7. Scroll Reveal Animation using IntersectionObserver
+    const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+    
+    if (revealElements.length && 'IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); // Trigger only once
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: "0px 0px -40px 0px"
+        });
+        
+        revealElements.forEach(el => revealObserver.observe(el));
+    } else {
+        // Fallback for older browsers
+        revealElements.forEach(el => el.classList.add('in-view'));
     }
 });
