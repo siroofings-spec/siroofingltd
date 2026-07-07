@@ -1,9 +1,10 @@
-# OS files
+# Ignore huge raw template downloads and local backups
+amarou-construction-and-building-html5-template-2023-11-27-05-36-50-utc/
+backup_topfloor/
+downloadable/
+topfloor pack/
+unused_amarou_templates/
+
+# Ignore system files
 .DS_Store
 Thumbs.db
-
-# Node dependencies (dacă folosiți pe viitor)
-node_modules/
-.env
-dist/
-build/
