@@ -1,0 +1,1160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S&I Roofing - Image Catalog & Portfolio Sorter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Plus Jakarta Sans', sans-serif; }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; }
+  </style>
+</head>
+<body class="bg-slate-900 text-slate-100 min-h-screen pb-20">
+  <header class="bg-slate-800 border-b border-slate-700 py-6 px-8 sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div>
+        <h1 class="text-2xl font-extrabold text-blue-400">S&I Roofing Ltd</h1>
+        <p class="text-slate-400 text-sm">Portfolio Image Classification & Sorter Helper</p>
+      </div>
+      <div class="flex gap-3">
+        <button onclick="filterCat('All')" class="tab-btn px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-500 text-white text-sm font-semibold transition-all">All Images</button>
+        <button onclick="filterCat('Velux Windows')" class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-semibold transition-all">Velux Windows</button>
+        <button onclick="filterCat('Roofing / Slates')" class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-semibold transition-all">Roofing & Slates</button>
+        <button onclick="filterCat('Lead & Flashing')" class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-semibold transition-all">Lead & Flashing</button>
+        <button onclick="filterCat('Attic Insulation')" class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-semibold transition-all">Attic Insulation</button>
+        <button onclick="filterCat('Other')" class="tab-btn px-4 py-2 rounded-lg bg-slate-700 hover:bg-slate-600 text-slate-300 text-sm font-semibold transition-all">Other</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 mt-8">
+    <!-- Recommendations Summary Card -->
+    <div class="bg-slate-800 border border-slate-700 rounded-xl p-6 mb-10 shadow-lg">
+      <h2 class="text-xl font-bold text-slate-100 mb-4 flex items-center gap-2">
+        <span class="text-blue-500">★</span> Recommended Selections (AI Classified)
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 text-sm">
+        <!-- Rec 1 -->
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/50">
+          <h3 class="font-bold text-blue-400 mb-2">1. Velux Windows</h3>
+          <p class="text-xs text-slate-400 mb-3">Best matches with windows + roof:</p>
+          <ul class="space-y-1.5 font-mono text-slate-300 text-xs">
+            <li>• WhatsApp Image 2026-07-02 at 20.00.44.jpeg (82% Window, 74% Roof)</li>
+            <li>• WhatsApp Image 2026-07-02 at 19.59.08.jpeg (81% Window, 61% Roof)</li>
+          </ul>
+        </div>
+        <!-- Rec 2 -->
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/50">
+          <h3 class="font-bold text-emerald-400 mb-2">2. Roofing & Slates</h3>
+          <p class="text-xs text-slate-400 mb-3">High confidence clean slate builds:</p>
+          <ul class="space-y-1.5 font-mono text-slate-300 text-xs">
+            <li>• WhatsApp Image 2026-07-02 at 19.59.31.jpeg (86% Roof, 56% Window)</li>
+            <li>• WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg (75% Roof)</li>
+          </ul>
+        </div>
+        <!-- Rec 3 -->
+        <div class="bg-slate-900/60 p-4 rounded-lg border border-slate-700/50">
+          <h3 class="font-bold text-amber-400 mb-2">3. Chimneys & Flashing</h3>
+          <p class="text-xs text-slate-400 mb-3">Lead flashing or chimney details:</p>
+          <ul class="space-y-1.5 font-mono text-slate-300 text-xs">
+            <li>• WhatsApp Image 2026-07-02 at 19.59.31.jpeg (72% Chimney, 86% Roof)</li>
+            <li>• WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg (16% Chimney, 24% Window)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-4 p-3 bg-blue-900/20 border border-blue-800/40 rounded text-xs text-blue-300">
+        <strong>Copy Command Example:</strong> To copy an image into your portfolio, you can run a shell command like:<br>
+        <code class="block mt-1 bg-slate-900 p-2 rounded text-slate-200 select-all">cp "/Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.44.jpeg" "/Users/artiom/.gemini/antigravity/scratch/siroofingltd/assets/images/portfolio/portfolio1.jpg"</code>
+      </div>
+    </div>
+
+    <!-- Images Grid -->
+    <div id="imageGrid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.06.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.06.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.06.jpeg">WhatsApp Image 2026-07-02 at 19.57.06.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 91%, sky: 86%, cloudy: 86%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.06.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.18.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.18.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.18.jpeg">WhatsApp Image 2026-07-02 at 19.57.18.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 49%, people: 48%, adult: 48%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.18.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.20.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.20.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.20.jpeg">WhatsApp Image 2026-07-02 at 19.57.20.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 99%, sky: 98%, cloudy: 93%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.20.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.21.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.21.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.21.jpeg">WhatsApp Image 2026-07-02 at 19.57.21.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 43%, outdoor: 43%, grass: 43%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.21.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.29.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.29.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.29.jpeg">WhatsApp Image 2026-07-02 at 19.57.29.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 92%, sky: 92%, cloudy: 92%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.29.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.41.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.41.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.41.jpeg">WhatsApp Image 2026-07-02 at 19.57.41.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 84%, sky: 84%, cloudy: 84%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.41.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.51.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.51.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.51.jpeg">WhatsApp Image 2026-07-02 at 19.57.51.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 89%, sky: 89%, cloudy: 89%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.51.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.57.53.jpeg" alt="WhatsApp Image 2026-07-02 at 19.57.53.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.57.53.jpeg">WhatsApp Image 2026-07-02 at 19.57.53.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 84%, sky: 83%, cloudy: 83%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.57.53.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.58.01.jpeg" alt="WhatsApp Image 2026-07-02 at 19.58.01.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.58.01.jpeg">WhatsApp Image 2026-07-02 at 19.58.01.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 83%, sky: 83%, cloudy: 83%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.58.01.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.58.07.jpeg" alt="WhatsApp Image 2026-07-02 at 19.58.07.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.58.07.jpeg">WhatsApp Image 2026-07-02 at 19.58.07.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 48%, wood_processed: 43%, roof: 36%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.58.07.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.58.19.jpeg" alt="WhatsApp Image 2026-07-02 at 19.58.19.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.58.19.jpeg">WhatsApp Image 2026-07-02 at 19.58.19.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 84%, land: 83%, grass: 83%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.58.19.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.58.59.jpeg" alt="WhatsApp Image 2026-07-02 at 19.58.59.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.58.59.jpeg">WhatsApp Image 2026-07-02 at 19.58.59.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 61%, sky: 59%, cloudy: 59%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.58.59.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.00 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.00 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.00 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.00 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 62%, sky: 62%, cloudy: 62%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.00 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.00.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.00.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.00.jpeg">WhatsApp Image 2026-07-02 at 19.59.00.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 78%, outdoor: 70%, sky: 70%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.00.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.01 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.01 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.01 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.01 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 75%, conveyance: 74%, portal: 74%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.01 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.01 (2).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.01 (2).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.01 (2).jpeg">WhatsApp Image 2026-07-02 at 19.59.01 (2).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 90%, sky: 90%, cloudy: 90%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.01 (2).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.01.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.01.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.01.jpeg">WhatsApp Image 2026-07-02 at 19.59.01.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 98%, sky: 98%, blue_sky: 95%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.01.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.02 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.02 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.02 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.02 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 56%, outdoor: 56%, grass: 56%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.02 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.02 (2).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.02 (2).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.02 (2).jpeg">WhatsApp Image 2026-07-02 at 19.59.02 (2).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 45%, wood_processed: 45%, outdoor: 40%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.02 (2).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.02.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.02.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.02.jpeg">WhatsApp Image 2026-07-02 at 19.59.02.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 66%, sky: 60%, blue_sky: 60%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.02.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.03.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.03.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.03.jpeg">WhatsApp Image 2026-07-02 at 19.59.03.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 75%, wood_processed: 75%, material: 25%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.03.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.04 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.04 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.04 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.04 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 46%, fence: 46%, people: 33%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.04 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.04.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.04.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.04.jpeg">WhatsApp Image 2026-07-02 at 19.59.04.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 55%, wood_processed: 54%, fence: 30%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.04.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.06.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.06.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.06.jpeg">WhatsApp Image 2026-07-02 at 19.59.06.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 57%, outdoor: 57%, grass: 57%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.06.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.07 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.07 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.07 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.07 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 49%, fence: 49%, recreation: 40%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.07 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.07.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.07.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.07.jpeg">WhatsApp Image 2026-07-02 at 19.59.07.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 67%, fence: 65%, cord: 50%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.07.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.08.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.08.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.08.jpeg">WhatsApp Image 2026-07-02 at 19.59.08.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 85%, conveyance: 82%, portal: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.08.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.11 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.11 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.11 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.11 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 89%, outdoor: 89%, grass: 89%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.11 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.11.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.11.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.11.jpeg">WhatsApp Image 2026-07-02 at 19.59.11.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 82%, land: 82%, people: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.11.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.12 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.12 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.12 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.12 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 73%, railroad: 73%, track_rail: 73%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.12 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.12.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.12.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.12.jpeg">WhatsApp Image 2026-07-02 at 19.59.12.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 67%, railroad: 66%, track_rail: 66%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.12.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.15.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.15.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.15.jpeg">WhatsApp Image 2026-07-02 at 19.59.15.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 90%, outdoor: 90%, grass: 90%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.15.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.16.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.16.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.16.jpeg">WhatsApp Image 2026-07-02 at 19.59.16.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 91%, outdoor: 91%, grass: 91%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.16.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.17 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.17 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.17 (1).jpeg">WhatsApp Image 2026-07-02 at 19.59.17 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 62%, conveyance: 57%, portal: 57%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.17 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.17.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.17.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.17.jpeg">WhatsApp Image 2026-07-02 at 19.59.17.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> material: 44%, brick: 42%, structure: 40%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.17.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.20.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.20.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.20.jpeg">WhatsApp Image 2026-07-02 at 19.59.20.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 57%, wood_processed: 55%, people: 38%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.20.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.22.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.22.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.22.jpeg">WhatsApp Image 2026-07-02 at 19.59.22.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 69%, outdoor: 69%, grass: 69%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.22.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.23.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.23.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.23.jpeg">WhatsApp Image 2026-07-02 at 19.59.23.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 92%, sky: 92%, cloudy: 92%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.23.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.25.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.25.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.25.jpeg">WhatsApp Image 2026-07-02 at 19.59.25.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 86%, sky: 83%, blue_sky: 83%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.25.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.27.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.27.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.27.jpeg">WhatsApp Image 2026-07-02 at 19.59.27.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 77%, adult: 77%, material: 65%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.27.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.28.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.28.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.28.jpeg">WhatsApp Image 2026-07-02 at 19.59.28.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 92%, blue_sky: 92%, sky: 92%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.28.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.29.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.29.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.29.jpeg">WhatsApp Image 2026-07-02 at 19.59.29.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 74%, adult: 74%, material: 60%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.29.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.31.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.31.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.31.jpeg">WhatsApp Image 2026-07-02 at 19.59.31.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 91%, outdoor: 86%, sky: 86%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.31.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.33.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.33.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.33.jpeg">WhatsApp Image 2026-07-02 at 19.59.33.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> material: 66%, brick: 66%, structure: 54%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.33.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.35.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.35.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.35.jpeg">WhatsApp Image 2026-07-02 at 19.59.35.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 79%, sky: 79%, cloudy: 79%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.35.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.36.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.36.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.36.jpeg">WhatsApp Image 2026-07-02 at 19.59.36.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 93%, sky: 93%, cloudy: 90%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.36.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 19.59.50.jpeg" alt="WhatsApp Image 2026-07-02 at 19.59.50.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 19.59.50.jpeg">WhatsApp Image 2026-07-02 at 19.59.50.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> material: 70%, brick: 70%, structure: 68%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 19.59.50.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.09.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.09.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.09.jpeg">WhatsApp Image 2026-07-02 at 20.00.09.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 81%, adult: 81%, material: 73%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.09.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.10.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.10.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.10.jpeg">WhatsApp Image 2026-07-02 at 20.00.10.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 80%, conveyance: 80%, portal: 80%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.10.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.11.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.11.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.11.jpeg">WhatsApp Image 2026-07-02 at 20.00.11.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 89%, sky: 89%, cloudy: 88%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.11.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg">WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 87%, sky: 87%, cloudy: 87%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.20 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.20 (2).jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.20 (2).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.20 (2).jpeg">WhatsApp Image 2026-07-02 at 20.00.20 (2).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> material: 51%, structure: 31%, wood_processed: 31%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.20 (2).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.20 (3).jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.20 (3).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.20 (3).jpeg">WhatsApp Image 2026-07-02 at 20.00.20 (3).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 67%, adult: 67%, structure: 30%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.20 (3).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.20.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.20.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.20.jpeg">WhatsApp Image 2026-07-02 at 20.00.20.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 21%, wood_processed: 21%, people: 16%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.20.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg">WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 64%, sky: 64%, blue_sky: 64%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.21 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.21.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.21.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.21.jpeg">WhatsApp Image 2026-07-02 at 20.00.21.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 82%, conveyance: 82%, portal: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.21.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.39.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.39.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.39.jpeg">WhatsApp Image 2026-07-02 at 20.00.39.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 82%, outdoor: 82%, grass: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.39.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.42.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.42.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.42.jpeg">WhatsApp Image 2026-07-02 at 20.00.42.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 86%, outdoor: 86%, grass: 86%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.42.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.00.44.jpeg" alt="WhatsApp Image 2026-07-02 at 20.00.44.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.00.44.jpeg">WhatsApp Image 2026-07-02 at 20.00.44.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 88%, conveyance: 82%, portal: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.00.44.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.30.jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.30.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.30.jpeg">WhatsApp Image 2026-07-02 at 20.01.30.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 91%, land: 85%, grass: 85%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.30.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.45 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.45 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.45 (1).jpeg">WhatsApp Image 2026-07-02 at 20.01.45 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 81%, outdoor: 81%, grass: 81%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.45 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.45.jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.45.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.45.jpeg">WhatsApp Image 2026-07-02 at 20.01.45.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 45%, land: 45%, grass: 44%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.45.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.56.jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.56.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.56.jpeg">WhatsApp Image 2026-07-02 at 20.01.56.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 83%, wood_processed: 83%, outdoor: 79%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.56.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.57 (1).jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.57 (1).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.57 (1).jpeg">WhatsApp Image 2026-07-02 at 20.01.57 (1).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 50%, roof: 47%, conveyance: 35%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.57 (1).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.57 (2).jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.57 (2).jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.57 (2).jpeg">WhatsApp Image 2026-07-02 at 20.01.57 (2).jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> material: 39%, structure: 27%, wood_processed: 26%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.57 (2).jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.01.57.jpeg" alt="WhatsApp Image 2026-07-02 at 20.01.57.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.01.57.jpeg">WhatsApp Image 2026-07-02 at 20.01.57.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 87%, sky: 87%, cloudy: 87%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.01.57.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.08.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.08.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.08.jpeg">WhatsApp Image 2026-07-02 at 20.02.08.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> structure: 13%, conveyance: 11%, portal: 11%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.08.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Velux Windows">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.10.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.10.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-blue-900/80 text-blue-300 border-blue-700">Velux Windows</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.10.jpeg">WhatsApp Image 2026-07-02 at 20.02.10.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 65%, sky: 65%, cloudy: 65%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.10.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.12.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.12.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.12.jpeg">WhatsApp Image 2026-07-02 at 20.02.12.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 79%, sky: 79%, cloudy: 79%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.12.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.13.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.13.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.13.jpeg">WhatsApp Image 2026-07-02 at 20.02.13.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 79%, adult: 79%, structure: 70%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.13.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.15.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.15.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.15.jpeg">WhatsApp Image 2026-07-02 at 20.02.15.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> people: 71%, adult: 71%, outdoor: 67%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.15.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.16.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.16.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.16.jpeg">WhatsApp Image 2026-07-02 at 20.02.16.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> land: 88%, outdoor: 88%, grass: 88%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.16.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.25.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.25.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.25.jpeg">WhatsApp Image 2026-07-02 at 20.02.25.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 81%, land: 81%, grass: 80%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.25.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Other">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.26.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.26.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-slate-800 text-slate-400 border-slate-600">Other</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.26.jpeg">WhatsApp Image 2026-07-02 at 20.02.26.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 85%, sky: 85%, cloudy: 84%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.26.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+      <div class="img-card bg-slate-800 border border-slate-700/60 rounded-xl overflow-hidden shadow-lg transition-transform hover:-translate-y-1 hover:shadow-xl" data-category="Roofing / Slates">
+        <div class="relative h-48 bg-slate-950 flex items-center justify-center overflow-hidden">
+          <img class="w-100 h-100 object-cover" src="file:///Users/artiom/Desktop/poze  portoffoliu websitre/WhatsApp Image 2026-07-02 at 20.02.27.jpeg" alt="WhatsApp Image 2026-07-02 at 20.02.27.jpeg" loading="lazy">
+          <span class="absolute top-2 left-2 px-2.5 py-1 rounded-full text-xs font-bold border bg-emerald-900/80 text-emerald-300 border-emerald-700">Roofing / Slates</span>
+        </div>
+        <div class="p-4">
+          <h4 class="text-xs font-bold text-slate-300 font-mono truncate select-all" title="WhatsApp Image 2026-07-02 at 20.02.27.jpeg">WhatsApp Image 2026-07-02 at 20.02.27.jpeg</h4>
+          <p class="text-[10px] text-slate-500 mt-2 line-clamp-2"><strong>Tags:</strong> outdoor: 83%, land: 83%, grass: 82%</p>
+          <div class="mt-4 flex gap-1.5">
+            <button onclick="copyPath('WhatsApp Image 2026-07-02 at 20.02.27.jpeg')" class="flex-1 py-1.5 bg-slate-700 hover:bg-slate-600 text-white rounded text-[11px] font-semibold transition-all">Copy Filename</button>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </main>
+
+  <script>
+    function filterCat(cat) {
+      // Toggle button active classes
+      const buttons = document.querySelectorAll('.tab-btn');
+      buttons.forEach(btn => {
+        if (btn.innerText.includes(cat) || (cat === 'All' && btn.innerText.includes('All'))) {
+          btn.classList.add('bg-blue-600', 'text-white');
+          btn.classList.remove('bg-slate-700', 'text-slate-300');
+        } else {
+          btn.classList.remove('bg-blue-600', 'text-white');
+          btn.classList.add('bg-slate-700', 'text-slate-300');
+        }
+      });
+
+      // Filter cards
+      const cards = document.querySelectorAll('.img-card');
+      cards.forEach(card => {
+        if (cat === 'All' || card.getAttribute('data-category') === cat) {
+          card.classList.remove('hidden');
+        } else {
+          card.classList.add('hidden');
+        }
+      });
+    }
+
+    function copyPath(filename) {
+      navigator.clipboard.writeText(filename);
+      alert('Filename copied to clipboard: ' + filename);
+    }
+  </script>
+</body>
+</html>

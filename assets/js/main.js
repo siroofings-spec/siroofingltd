@@ -34,6 +34,7 @@ $(function () {
     /*==========  Pre Loading   ==========*/
     setTimeout(function () {
         $(".preloader").remove();
+        $('.floating-actions').addClass('show-actions');
     }, 600);
 
     /*==========   Mobile Menu   ==========*/
@@ -45,20 +46,7 @@ $(function () {
         $('.navbar-collapse').toggleClass('menu-opened');
     })
 
-    /*==========   Sticky Navbar   ==========*/
-    $win.on('scroll', function () {
-        if ($win.width() >= 992) {
-            var $navbar = $('.navbar');
-            var $header = $('.header');
-            if ($win.scrollTop() > 120) {
-                $navbar.addClass('is-sticky');
-                $header.addClass('sticky-active');
-            } else {
-                $navbar.removeClass('is-sticky');
-                $header.removeClass('sticky-active');
-            }
-        }
-    });
+    /*==========   Sticky Navbar (Disabled for permanent fixed header)   ==========*/
 
     /*==========  Search Popup  ==========*/
     $('.action-btn__search').on('click', function (e) {
@@ -145,6 +133,48 @@ $(function () {
     });
 
     /*==========   Slick Carousel ==========*/
+    $('.slick-carousel').on('init reInit', function (event, slick) {
+        var currentSlide = slick.currentSlide || 0;
+        var $dots = $(slick.$dots).find('li');
+        if ($dots.length <= 3) {
+            $dots.addClass('dot-visible');
+            return;
+        }
+        var total = slick.slideCount;
+        var visibleIndices = [
+            currentSlide,
+            (currentSlide + 1) % total,
+            (currentSlide + 2) % total
+        ];
+        $dots.each(function (index) {
+            if (visibleIndices.indexOf(index) !== -1) {
+                $(this).addClass('dot-visible');
+            } else {
+                $(this).removeClass('dot-visible');
+            }
+        });
+    });
+
+    $('.slick-carousel').on('beforeChange', function (event, slick, currentSlide, nextSlide) {
+        var $dots = $(slick.$dots).find('li');
+        if ($dots.length <= 3) {
+            $dots.addClass('dot-visible');
+            return;
+        }
+        var total = slick.slideCount;
+        var visibleIndices = [
+            nextSlide,
+            (nextSlide + 1) % total,
+            (nextSlide + 2) % total
+        ];
+        $dots.each(function (index) {
+            if (visibleIndices.indexOf(index) !== -1) {
+                $(this).addClass('dot-visible');
+            } else {
+                $(this).removeClass('dot-visible');
+            }
+        });
+    });
     $('.slick-carousel').slick();
 
     /*==========  Popup Video  ==========*/
@@ -191,4 +221,12 @@ $(function () {
 
     /*==========  NiceSelect Plugin  ==========*/
     $('select').niceSelect();
+
+    /*==========  Service selection to contact form auto-fill  ==========*/
+    $('.service-link').on('click', function (e) {
+        var serviceVal = $(this).attr('data-service');
+        if (serviceVal) {
+            $('#serviceSelect').val(serviceVal).niceSelect('update');
+        }
+    });
 });

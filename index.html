@@ -48,12 +48,30 @@
       }
     }
     
-    /* Header stickiness & fade out animations */
-    .header.sticky-active {
-      padding-bottom: 80px;
+    /* Permanent fixed header to prevent scroll flicker or jump */
+    .header {
+      position: fixed !important;
+      top: 0 !important;
+      left: 0 !important;
+      width: 100% !important;
+      height: 75px !important;
+      z-index: 1000 !important;
+      background-color: #ffffff !important;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+    }
+    .navbar {
+      height: 75px !important;
+      background-color: #ffffff !important;
+    }
+    .navbar .nav__item .nav__item-link {
+      line-height: 75px !important;
+    }
+    .wrapper {
+      padding-top: 75px !important;
     }
     .is-sticky {
-      animation: translateHeader 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      animation: none !important;
+      -webkit-animation: none !important;
     }
     
     /* Scroll Progress Indicator Bar */
@@ -86,6 +104,368 @@
       transform: translateY(0) !important;
       opacity: 1 !important;
     }
+
+
+
+    /* Slick carousel Prev/Next arrow navigation symmetry overrides */
+    .portfolio-standard-carousel .slick-arrow.slick-prev {
+      width: 32px !important;
+      right: 45px !important;
+      left: auto !important;
+    }
+    .portfolio-standard-carousel .slick-arrow.slick-prev:before {
+      -webkit-transform: translateX(0) !important;
+      transform: translateX(0) !important;
+    }
+    .portfolio-standard-carousel .slick-arrow.slick-prev:after {
+      display: none !important;
+    }
+
+    /* Hide template large outline check marks to keep only FontAwesome checks */
+    .list-items li:before {
+      display: none !important;
+    }
+
+    /* Fix projects carousel slides disappearing, layout stretching, and cropped shadow bug */
+    .portfolio-standard-carousel .slick-list {
+      overflow: hidden !important;
+      padding: 25px 0 !important;
+      margin-top: -25px !important;
+      margin-bottom: -25px !important;
+    }
+    .portfolio-standard-carousel .slick-slide {
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+
+    /* Prevent service item button text from shifting on hover */
+    .service-item .btn:hover span {
+      transform: none !important;
+      -webkit-transform: none !important;
+    }
+
+    /* Service card hover transition */
+    .services-layout2 .service-item {
+      position: relative;
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .services-layout2 .service-item:hover {
+      transform: scale(1.025) !important;
+      box-shadow: 0 15px 35px rgba(0, 102, 255, 0.15) !important;
+    }
+
+    /* Header action Free Quote button height adjustment */
+    .action-btn__request {
+      height: 75px !important;
+      line-height: 75px !important;
+    }
+
+    /* Slick carousel premium fluid active pill pagination dots with template reset */
+    .services-layout2 .slick-dots,
+    .portfolio-standard-carousel .slick-dots {
+      display: flex !important;
+      justify-content: center;
+      list-style: none;
+      padding: 0;
+      margin: 35px 0 0 0;
+      width: 100%;
+      text-align: center !important;
+    }
+    .services-layout2 .slick-dots li,
+    .portfolio-standard-carousel .slick-dots li {
+      display: inline-block !important;
+      width: 0 !important;
+      height: 10px !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      border: none !important;
+      background: transparent !important;
+      cursor: pointer;
+      opacity: 0 !important;
+      overflow: hidden !important;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    }
+    .services-layout2 .slick-dots li.dot-visible,
+    .portfolio-standard-carousel .slick-dots li.dot-visible {
+      width: 10px !important;
+      opacity: 1 !important;
+      margin: 0 5px !important;
+    }
+    .services-layout2 .slick-dots li.slick-active.dot-visible,
+    .portfolio-standard-carousel .slick-dots li.slick-active.dot-visible {
+      width: 10px !important;
+    }
+    .services-layout2 .slick-dots li button,
+    .portfolio-standard-carousel .slick-dots li button {
+      border: none !important;
+      background: #ffffff !important;
+      opacity: 0.35 !important;
+      width: 100% !important;
+      height: 100% !important;
+      border-radius: 50% !important;
+      font-size: 0 !important;
+      padding: 0 !important;
+      cursor: pointer;
+      outline: none;
+      display: block !important;
+      transition: background-color 0.4s, opacity 0.4s !important;
+    }
+    .services-layout2 .slick-dots li.slick-active button,
+    .portfolio-standard-carousel .slick-dots li.slick-active button {
+      background: #60A5FA !important;
+      opacity: 1 !important;
+    }
+
+    /* ==========================================================================
+       MOBILE RESPONSIVENESS OVERRIDES (Phones & Tablets)
+       ========================================================================== */
+    @media (max-width: 991px) {
+      /* Mobile Menu Dropdown & Slide Animation */
+      .navbar-collapse {
+        display: block !important;
+        position: absolute !important;
+        top: 75px !important;
+        left: 0 !important;
+        width: 100% !important;
+        background-color: #ffffff !important;
+        padding: 0 20px 20px 20px !important;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.08) !important;
+        border-top: 1px solid #f1f5f9 !important;
+        max-height: 0 !important;
+        opacity: 0 !important;
+        overflow: hidden !important;
+        transition: max-height 0.4s ease-in-out, opacity 0.4s ease-in-out !important;
+        z-index: 9999 !important;
+      }
+      .navbar-collapse.menu-opened {
+        max-height: 500px !important;
+        opacity: 1 !important;
+        overflow-y: auto !important;
+      }
+      .navbar .nav__item {
+        margin-bottom: 5px !important;
+        border-bottom: 1px solid #f1f5f9 !important;
+      }
+      .navbar .nav__item:last-child {
+        border-bottom: none !important;
+      }
+      .navbar .nav__item .nav__item-link {
+        line-height: 50px !important;
+        font-size: 15px !important;
+        color: #0F172A !important;
+        display: block !important;
+        font-weight: 700 !important;
+      }
+      /* Hide request quote button in header on mobile */
+      .header-actions {
+        display: none !important;
+      }
+      /* About Section Overlapping Images mobile reset */
+      .about-layout2 .about-img-container {
+        padding-right: 0 !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 30px !important;
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 15px !important;
+      }
+      .about-layout2 .about-img-container .about-img:first-of-type {
+        padding-top: 0 !important;
+        padding-right: 0 !important;
+      }
+      .about-layout2 .about-img-container .about-img:last-of-type {
+        position: relative !important;
+        top: auto !important;
+        right: auto !important;
+        left: auto !important;
+        bottom: auto !important;
+      }
+    }
+
+    @media (max-width: 767px) {
+      /* Hero Section Typography and Button Stacking */
+      .slider {
+        height: auto !important;
+        padding-top: 80px !important;
+        padding-bottom: 80px !important;
+        min-height: calc(100vh - 75px) !important;
+        display: flex !important;
+        align-items: center !important;
+      }
+      .slider .slide-item__title {
+        font-size: 34px !important;
+        line-height: 1.25 !important;
+      }
+      .slider .slide-item__desc {
+        font-size: 15px !important;
+        margin-bottom: 30px !important;
+      }
+      .slider .slide-item__content .btn {
+        display: block !important;
+        width: 100% !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+        text-align: center !important;
+        height: 50px !important;
+        line-height: 50px !important;
+        padding: 0 !important;
+      }
+      .slider .slide-item__content .btn:last-child {
+        margin-bottom: 0 !important;
+      }
+
+      /* Reset Key Features Overlaps and Spacers */
+      .features-latout1.scroll-reveal {
+        margin-top: 0 !important;
+        transform: none !important;
+        opacity: 1 !important;
+      }
+      .features-wrapper .feature-item {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        border-right: none !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+        padding: 25px 20px !important;
+      }
+      .features-wrapper .feature-item:last-child {
+        border-bottom: none !important;
+      }
+
+      /* Dynamic Section Padding reduction */
+      #about, 
+      #services, 
+      #projects, 
+      #contact, 
+      #faq, 
+      .banner-layout3 {
+        padding-top: 50px !important;
+        padding-bottom: 50px !important;
+      }
+      
+      /* Scale titles on mobile */
+      .heading__title {
+        font-size: 26px !important;
+      }
+      .heading__subtitle {
+        font-size: 11px !important;
+      }
+
+      /* 3-Step Process Column Layout fixes */
+      .banner-layout3 .col-lg-5 {
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+      }
+      .banner-layout3 .fancybox-item {
+        margin-bottom: 25px !important;
+      }
+      .banner-layout3 .col-lg-7 {
+        margin-top: 30px !important;
+      }
+
+      /* Testimonials & Form padding fixes */
+      #reviews.testimonials {
+        padding: 30px 20px !important;
+      }
+      #reviews.testimonials .testimonial-item__desc {
+        font-size: 15px !important;
+        margin-bottom: 35px !important; /* Solves giant gap */
+      }
+      #contactForm {
+        padding: 30px 20px !important;
+      }
+      
+      /* FAQ accordion padding fixes */
+      #faq .banner-panel {
+        padding: 30px 15px !important;
+      }
+    }
+
+    /* Hide template scroll top button background shape to clean the background */
+    #scrollTopBtn {
+      display: none !important;
+    }
+
+    /* Floating Contact Actions Styles */
+    .floating-actions {
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      z-index: 9999 !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+    }
+    
+    .floating-actions a {
+      width: 46px !important;
+      height: 46px !important;
+      border-radius: 50% !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      color: #ffffff !important;
+      text-decoration: none !important;
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+    }
+    
+    .action-btn-wa {
+      background-color: #25D366 !important;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.35) !important;
+    }
+    
+    .action-btn-phone {
+      background-color: #1E40AF !important;
+      box-shadow: 0 4px 10px rgba(30, 64, 175, 0.35) !important;
+    }
+    
+    .action-btn-wa i {
+      font-size: 24px !important;
+    }
+    
+    .action-btn-phone i {
+      font-size: 18px !important;
+    }
+
+    /* Floating Actions Entrance Bounce Animation triggered after preloader removal */
+    .floating-actions .action-btn-phone,
+    .floating-actions .action-btn-wa {
+      opacity: 0;
+      transform: scale(0);
+    }
+    
+    @keyframes bounceInRight {
+      0% {
+        opacity: 0;
+        transform: translateX(80px) scale(0.3);
+      }
+      60% {
+        opacity: 1;
+        transform: translateX(-15px) scale(1.15);
+      }
+      80% {
+        transform: translateX(5px) scale(0.95);
+      }
+      100% {
+        opacity: 1;
+        transform: translateX(0) scale(1);
+      }
+    }
+    
+    .floating-actions.show-actions .action-btn-phone {
+      animation: bounceInRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+      animation-delay: 0.1s !important;
+    }
+    
+    .floating-actions.show-actions .action-btn-wa {
+      animation: bounceInRight 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275) both !important;
+      animation-delay: 0.6s !important;
+    }
+
+    /* Force scales on hover */
+    .floating-actions.show-actions .action-btn-phone:hover,
+    .floating-actions.show-actions .action-btn-wa:hover {
+      transform: scale(1.12) !important;
+    }
   </style>
 </head>
 
@@ -104,39 +484,10 @@
         Header
     =========================== -->
     <header class="header header-light header-layout1">
-      <div class="header-topbar d-none d-xl-block" style="background-color: #0F172A;">
-        <div class="container-fluid">
-          <div class="row">
-            <div class="col-sm-12 col-md-7 col-lg-7">
-              <div class="d-flex flex-wrap justify-content-between">
-                <ul class="contact-list list-unstyled mb-0 d-flex flex-wrap">
-                  <li>
-                    <i class="icon-phone" style="color: #60A5FA;"></i><span style="color: #cbd5e1;">Phone:</span>
-                    <a href="tel:+353894900015" style="color: #ffffff; font-weight: 700;">+353 89 490 0015</a>
-                  </li>
-                  <li>
-                    <i class="icon-envelope" style="color: #60A5FA;"></i><span style="color: #cbd5e1;">Email:</span>
-                    <a href="mailto:siroofings@gmail.com" style="color: #ffffff; font-weight: 700;">siroofings@gmail.com</a>
-                  </li>
-                  <li><i class="icon-clock" style="color: #60A5FA;"></i><span style="color: #ffffff; font-weight: 700;">Hours: 24/7 Emergency Repairs</span></li>
-                </ul>
-              </div>
-            </div><!-- /.col-lg-7 -->
-            <div class="col-sm-12 col-md-5 col-lg-5 d-flex flex-wrap justify-content-end">
-              <ul class="header-topbar__links d-flex flex-wrap list-unstyled mb-0">
-                <li style="color: #cbd5e1; font-weight: 700;">📍 Serving Dublin, Cork, Limerick &amp; All Ireland 🇮🇪</li>
-              </ul>
-              <ul class="social-icons list-unstyled mb-0">
-                <li><a href="https://wa.me/353894900015?text=Hello%20S%26I%20Roofing%20Ltd,%20I%20would%20like%20a%20free%20quote" target="_blank" style="background-color: #25D366; color: #fff;"><i class="fab fa-whatsapp"></i></a></li>
-              </ul>
-            </div><!-- /.col-lg-5 -->
-          </div><!-- /.row -->
-        </div><!-- /.container -->
-      </div><!-- /.header-topbar -->
       <nav class="navbar navbar-expand-lg">
         <div class="container px-0">
           <a class="navbar-brand" href="#home" style="display: flex; align-items: center; padding: 5px 0;">
-            <img src="assets/images/logo/logo-client.png" class="logo-dark" alt="S&I Roofing Ltd" style="height: 60px; object-fit: contain; max-height: 60px;">
+            <img src="assets/images/logo/logo-client.png" class="logo-dark" alt="S&I Roofing Ltd" style="height: 48px; object-fit: contain; max-height: 48px;">
           </a>
           <button class="navbar-toggler" type="button">
             <span class="menu-lines"><span></span></span>
@@ -147,19 +498,16 @@
                 <a href="#home" class="nav__item-link active">Home</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="#services" class="nav__item-link">Services</a>
+                <a href="#about" class="nav__item-link">About Us</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="#about" class="nav__item-link">About Us</a>
+                <a href="#services" class="nav__item-link">Services</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="#projects" class="nav__item-link">Projects Showcase</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
-                <a href="#contact" class="nav__item-link">Reviews</a>
-              </li><!-- /.nav-item -->
-              <li class="nav__item">
-                <a href="#faq" class="nav__item-link">FAQ</a>
+                <a href="#reviews" class="nav__item-link">Reviews</a>
               </li><!-- /.nav-item -->
               <li class="nav__item">
                 <a href="#contact" class="nav__item-link">Contact</a>
@@ -178,7 +526,7 @@
     <!-- ============================
         Hero / Slider Section
     ============================== -->
-    <section id="home" class="slider slider-layout1" style="position: relative; height: 700px; background-image: url(assets/images/backgrounds/roofer-hero-bg.jpg); background-size: cover; background-position: center center; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+    <section id="home" class="slider slider-layout1" style="position: relative; height: calc(100vh - 75px); background-image: url(assets/images/backgrounds/roofer-hero-bg.jpg); background-size: cover; background-position: center center; display: flex; align-items: center; justify-content: center; overflow: hidden;">
       <div class="bg-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(to right, rgba(15, 23, 42, 0.9) 35%, rgba(15, 23, 42, 0.45) 100%); z-index: 1;"></div>
       <div class="container" style="position: relative; z-index: 2;">
         <div class="row">
@@ -253,7 +601,7 @@
                 <img src="assets/images/portfolio/portfolio1.jpg" alt="Dublin Slate Roof Installation" class="img-fluid" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
               </div><!-- /.about-img -->
               <div class="about-img">
-                <img src="assets/images/portfolio/portfolio2.jpg" alt="Velux Window and Guttering Work" class="img-fluid" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <img src="assets/images/portfolio/roofer_team_about.jpg" alt="S&I Roofing Ltd Professional Master Roofers Team" class="img-fluid" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
               </div><!-- /.about-img -->
             </div>
           </div><!-- /.col-xl-5 -->
@@ -281,20 +629,19 @@
     <!-- ========================
         Services Layout 2
     =========================== -->
-    <section id="services" class="services-layout2" style="padding-top: 80px !important; padding-bottom: 120px !important; background-color: #1E40AF !important; background-blend-mode: luminosity !important;">
-      <div class="bg-img"><img src="assets/images/backgrounds/3.jpg" alt="banner"></div>
+    <section id="services" class="services-layout2" style="padding-top: 80px !important; padding-bottom: 120px !important; background: linear-gradient(135deg, #0F172A 0%, #1E3A8A 50%, #1E40AF 100%) !important;">
       <div class="container">
         <div class="row scroll-reveal">
           <div class="col-sm-12 col-md-12 col-lg-12 text-center">
             <span class="heading__subtitle" style="color: #60A5FA; font-weight: 800; text-transform: uppercase;">Our Specialisations</span>
-            <h3 class="heading__title color-white mb-50" style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 38px; line-height: 1.2; margin-top: 10px;">Professional Roofing Services in Ireland</h3>
-            <p class="heading__desc color-white mb-50" style="max-width: 600px; margin: 10px auto 40px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #cbd5e1 !important;">Swipe or click the arrows to browse our full list of services and select what you need.</p>
+            <h3 class="heading__title color-white" style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 38px; line-height: 1.2; margin-top: 10px; margin-bottom: 20px;">Professional Roofing Services in Ireland</h3>
+            <p class="heading__desc color-white" style="max-width: 800px; margin: 10px auto 25px; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #cbd5e1 !important;">Swipe or click the arrows to browse our full list of services and select what you need.</p>
           </div><!-- /.col-lg-12 -->
         </div><!-- /.row -->
         <div class="row scroll-reveal reveal-delay-1">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="slick-carousel"
-              data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows": true, "dots": false, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows": true, "dots": false, "infinite": true, "speed": 850, "cssEase": "cubic-bezier(0.16, 1, 0.3, 1)", "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 767, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}]}'>
               
               <!-- Service 1: Velux Windows -->
               <div class="service-item" style="border-radius: 12px; overflow: hidden; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05); margin: 15px;">
@@ -495,17 +842,17 @@
     ============================= -->
     <section id="projects" class="portfolio-standard portfolio-standard-carousel pt-20 pb-60 bg-gray" style="padding-top: 100px !important; padding-bottom: 100px !important;">
       <div class="container">
-        <div class="row text-center mb-50">
+        <div class="row text-center mb-50 scroll-reveal">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <span class="heading__subtitle" style="color: #1E40AF; font-weight: 800; text-transform: uppercase;">Our Portfolio</span>
             <h3 class="heading__title" style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 38px; line-height: 1.2; margin-top: 10px;">Recent Works &amp; Projects</h3>
             <p class="heading__desc" style="max-width: 600px; margin: 15px auto 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 16px; color: #475569;">Take a look at roofing projects we have successfully completed for Irish homeowners.</p>
           </div><!-- /.col-lg-6 -->
         </div><!-- /.row -->
-        <div class="row">
+        <div class="row scroll-reveal reveal-delay-2">
           <div class="col-sm-12 col-md-12 col-lg-12">
             <div class="slick-carousel"
-              data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows": true, "dots": false, "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2}}, {"breakpoint": 767, "settings": {"slidesToShow": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1}}]}'>
+              data-slick='{"slidesToShow": 3, "slidesToScroll": 1, "arrows": true, "dots": false, "infinite": true, "speed": 850, "cssEase": "cubic-bezier(0.16, 1, 0.3, 1)", "responsive": [ {"breakpoint": 992, "settings": {"slidesToShow": 2, "slidesToScroll": 1}}, {"breakpoint": 767, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}, {"breakpoint": 480, "settings": {"slidesToShow": 1, "slidesToScroll": 1}}]}'>
               
               <!-- portfolio item #1 -->
               <div class="portfolio-item" style="margin: 15px; border-radius: 8px; overflow: hidden; background: #ffffff; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
@@ -602,8 +949,8 @@
       <div class="container">
         <div class="row">
           <div class="col-sm-12 col-md-12 col-lg-12">
-            <div class="contact-panel mt--130" style="margin-top: 0 !important; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08);">
-              <div class="testimonials testimonials-layout1 bg-overlay" style="background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 64, 175, 0.95)) !important; padding: 50px 30px;">
+            <div class="contact-panel mt--130 scroll-reveal" style="margin-top: 0 !important; border-radius: 12px; overflow: hidden; box-shadow: 0 15px 40px rgba(0,0,0,0.08);">
+              <div id="reviews" class="testimonials testimonials-layout1 bg-overlay" style="background: linear-gradient(rgba(15, 23, 42, 0.88), rgba(30, 64, 175, 0.95)) !important; padding: 50px 30px;">
                 <div class="bg-img" style="opacity: 0.15;">
                   <img src="assets/images/banners/6.jpg" alt="banner">
                 </div>
@@ -825,13 +1172,13 @@
         Google Map
     =========================== -->
     <section class="google-map" style="position: relative; padding: 0 !important; margin: 0 !important; border: none !important; line-height: 0; background-color: #F8FAFC;">
-      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d152349.52988165768!2d-6.385785055047875!3d53.345869408018314!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48670e80ea27ac2f%3A0xa00c7a9973171a0!2sDublin%2C%20Ireland!5e0!3m2!1sen!2s!4v1719999999999!5m2!1sen!2s" width="100%" height="480" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      <iframe src="https://maps.google.com/maps?q=Baywood%20Villa,%20Moorefield%20Road,%20Newbridge,%20Co.%20Kildare,%20W12%20K381,%20Ireland&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="480" style="border:0; display: block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       
       <!-- Floating contact card -->
       <div class="contact-map-card" style="position: absolute; top: 50%; right: 10%; transform: translateY(-50%); background: #ffffff; padding: 35px 30px; border-radius: 8px; box-shadow: 0 15px 35px rgba(0,0,0,0.15); z-index: 10; max-width: 380px; width: calc(100% - 40px); line-height: 1.5; font-family: 'Plus Jakarta Sans', sans-serif;">
         <div style="margin-bottom: 25px;">
           <h5 style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 16px; color: #0F172A; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; line-height: 1.2;">Our Location</h5>
-          <p style="font-size: 14px; color: #475569; margin: 0; line-height: 1.4;">Dublin, Cork, Limerick, Galway, Ireland 🇮🇪</p>
+          <p style="font-size: 14px; color: #475569; margin: 0; line-height: 1.4;">Baywood Villa, Moorefield Road,<br>Newbridge, Co. Kildare, W12 K381</p>
         </div>
         <div style="margin-bottom: 25px;">
           <h5 style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 16px; color: #0F172A; text-transform: uppercase; margin-bottom: 8px; letter-spacing: 0.5px; line-height: 1.2;">Quick Contact</h5>
@@ -904,9 +1251,9 @@
                 <a class="contact-number d-flex align-items-center mb-20" href="tel:+353894900015" style="color: #ffffff; font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 20px; transition: color 0.3s;">
                   <i class="icon-phone" style="color: #60A5FA; margin-right: 10px;"></i><span>+353 89 490 0015</span>
                 </a><!-- /.contact__number -->
-                <p class="mb-30" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #94a3b8;">Dublin, Cork, Limerick, Galway, Ireland 🇮🇪</p>
+                <p class="mb-30" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #94a3b8;">Baywood Villa, Moorefield Road, Newbridge, Co. Kildare, W12 K381</p>
                 <ul class="social-icons list-unstyled d-flex">
-                  <li><a href="https://wa.me/353894900015" target="_blank" style="background-color: #25D366; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 18px;"><i class="fab fa-whatsapp"></i></a></li>
+                  <li><a href="https://wa.me/353894900015" target="_blank" style="background-color: #25D366; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 22px;"><i class="fab fa-whatsapp"></i></a></li>
                   <li><a href="tel:+353894900015" style="background-color: #1E40AF; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-phone"></i></a></li>
                 </ul><!-- /.social-icons -->
               </div><!-- /.footer-widget-content -->
@@ -936,13 +1283,13 @@
     </div><!-- /. search-popup -->
 
     <!-- Floating Contact Actions -->
-    <div class="floating-actions" style="position: fixed; bottom: 30px; right: 30px; z-index: 9999; display: flex; flex-direction: column; gap: 15px;">
+    <div class="floating-actions">
       <!-- WhatsApp Button -->
-      <a href="https://wa.me/353894900015?text=Hello%20S%26I%20Roofing%20Ltd,%20I%20would%20like%20a%20free%20quote" target="_blank" class="action-btn-wa" style="width: 55px; height: 55px; background-color: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 28px; box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s; text-decoration: none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <a href="https://wa.me/353894900015?text=Hello%20S%26I%20Roofing%20Ltd,%20I%20would%20like%20a%20free%20quote" target="_blank" class="action-btn-wa">
         <i class="fab fa-whatsapp"></i>
       </a>
       <!-- Phone Button -->
-      <a href="tel:+353894900015" class="action-btn-phone" style="width: 55px; height: 55px; background-color: #1E40AF; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ffffff; font-size: 22px; box-shadow: 0 5px 15px rgba(30, 64, 175, 0.4); transition: transform 0.3s; text-decoration: none;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+      <a href="tel:+353894900015" class="action-btn-phone">
         <i class="fas fa-phone"></i>
       </a>
     </div>
@@ -954,18 +1301,53 @@
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
+      // Scroll Spy & Click Scroll state variables
+      var isScrollingClick = false;
+      var spyElements = $('#home, #about, #services, #projects, #reviews, #contact');
+      var navItems = $('.navbar-nav .nav__item-link');
+
       // Smooth scrolling for navigation links
       $('a[href^="#"]').on('click', function(e) {
         var target = this.hash;
         if (target && $(target).length) {
           e.preventDefault();
+          isScrollingClick = true;
+          
+          // Update active state in nav menu immediately
+          navItems.removeClass('active');
+          $('.navbar-nav a[href="' + target + '"]').addClass('active');
+          
           $('html, body').animate({
             scrollTop: $(target).offset().top - 80
-          }, 600);
+          }, 600, function() {
+            setTimeout(function() {
+              isScrollingClick = false;
+            }, 50);
+          });
+        }
+      });
+
+      // Scroll Spy event handler to sync active navigation underline state with viewport scroll position
+      $(window).on('scroll', function() {
+        if (isScrollingClick) return;
+        
+        var scrollPos = $(window).scrollTop() + 150;
+        
+        spyElements.each(function() {
+          var top = $(this).offset().top;
+          var bottom = top + $(this).outerHeight();
+          var id = $(this).attr('id');
           
-          // Update active state in nav menu
-          $('.navbar-nav .nav__item-link').removeClass('active');
-          $(this).addClass('active');
+          if (scrollPos >= top && scrollPos < bottom) {
+            navItems.removeClass('active');
+            $('.navbar-nav a[href="#' + id + '"]').addClass('active');
+          }
+        });
+        
+        // Edge case: if reached the absolute bottom, force contact active highlight
+        if ($(window).scrollTop() + $(window).height() >= $(document).height() - 15) {
+          navItems.removeClass('active');
+          $('.navbar-nav a[href="#contact"]').addClass('active');
         }
       });
 
