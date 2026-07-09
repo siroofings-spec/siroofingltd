@@ -1187,7 +1187,7 @@
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group" style="margin-bottom: 20px;">
-                      <input type="text" class="form-control" placeholder="Phone Number" id="contact-Phone" name="contact-phone" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
+                      <input type="tel" class="form-control" placeholder="Phone Number" id="contact-Phone" name="contact-phone" required pattern="^[+]*[0-9\s-]{7,15}$" title="Please enter a valid phone number (between 7 and 15 digits)" style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
@@ -1546,6 +1546,12 @@
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
+        // Check validity first. If invalid, show validation messages and abort AJAX
+        if (!this.checkValidity()) {
+          this.reportValidity();
+          e.preventDefault();
+          return;
+        }
         e.preventDefault();
         
         const form = this;
