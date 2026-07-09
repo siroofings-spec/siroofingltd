@@ -157,6 +157,45 @@
       box-shadow: 0 15px 35px rgba(0, 102, 255, 0.15) !important;
     }
 
+    /* About Us - Premium overlapping gradient shape background */
+    .about-layout2 .about-img-container {
+      position: relative !important;
+      padding-left: 30px !important;
+      padding-bottom: 30px !important;
+      padding-right: 0 !important;
+      display: block !important;
+      overflow: visible !important;
+    }
+    .about-layout2 .about-img-container .about-img {
+      position: relative !important;
+      z-index: 2 !important;
+      width: 100% !important;
+      padding: 0 !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+    }
+    .about-layout2 .about-img-container .about-img img {
+      width: 100% !important;
+      height: auto !important;
+      border-radius: 12px !important;
+      box-shadow: 0 15px 35px rgba(15, 23, 42, 0.15) !important;
+      display: block !important;
+    }
+    .about-layout2 .about-img-container .about-shape-bg {
+      position: absolute !important;
+      left: 0 !important;
+      bottom: 0 !important;
+      width: calc(100% - 30px) !important;
+      height: calc(100% - 30px) !important;
+      z-index: 1 !important;
+      border-radius: 12px !important;
+      background: linear-gradient(135deg, #1E40AF 0%, #2563EB 50%, #1E3A8A 100%) !important;
+      box-shadow: 0 10px 30px rgba(30, 64, 175, 0.25) !important;
+      display: block !important;
+    }
+
     /* Header action Free Quote button height adjustment */
     .action-btn__request {
       height: 75px !important;
@@ -278,29 +317,28 @@
         display: none !important;
       }
       /* About Section Mobile Overlapping Depth Effect (Restored) */
+      /* About Section Mobile Overlapping Depth Effect */
       .about-layout2 .about-img-container {
         position: relative !important;
-        padding-bottom: 60px !important; 
-        padding-right: 30px !important;
+        padding-left: 20px !important;
+        padding-bottom: 20px !important; 
+        padding-right: 0 !important;
         margin-bottom: 40px !important;
         display: block !important;
       }
-      .about-layout2 .about-img-container .about-img:first-of-type {
+      .about-layout2 .about-img-container .about-img {
         width: 100% !important;
-        padding-top: 0 !important;
-        padding-right: 0 !important;
+        position: relative !important;
+        z-index: 2 !important;
       }
-      .about-layout2 .about-img-container .about-img:last-of-type {
-        position: absolute !important;
+      .about-layout2 .about-img-container .about-shape-bg {
+        width: calc(100% - 20px) !important;
+        height: calc(100% - 20px) !important;
+        left: 0 !important;
         bottom: 0 !important;
-        right: 0 !important;
-        width: 65% !important;
-        max-width: 280px !important;
-        border: 6px solid #ffffff !important;
-        box-shadow: -8px -8px 30px rgba(0,0,0,0.12) !important;
-        z-index: 5 !important;
-        top: auto !important;
-        left: auto !important;
+        position: absolute !important;
+        z-index: 1 !important;
+        border-radius: 12px !important;
       }
       /* Title scaling for tablets */
       .heading__title {
@@ -717,17 +755,16 @@
     =========================== -->
     <section id="about" class="about-layout2" style="padding-top: 120px; padding-bottom: 120px;">
       <div class="container">
-        <div class="row">
+        <div class="row align-items-center">
           <div class="col-sm-12 col-md-12 col-lg-6">
             <div class="about-img-container scroll-reveal reveal-delay-1">
+              <!-- Blue Gradient Background Shape instead of duplicate photo -->
+              <div class="about-shape-bg"></div>
               <div class="about-img">
-                <img src="assets/images/portfolio/portfolio1.jpg" alt="Dublin Slate Roof Installation" class="img-fluid" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
-              </div><!-- /.about-img -->
-              <div class="about-img">
-                <img src="assets/images/portfolio/roofer_team_about.jpg" alt="S&I Roofing Ltd Professional Master Roofers Team" class="img-fluid" style="border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                <img src="assets/images/portfolio/roofer_team_about.jpg" alt="S&I Roofing Ltd Professional Master Roofers Team" class="img-fluid">
               </div><!-- /.about-img -->
             </div>
-          </div><!-- /.col-xl-5 -->
+          </div><!-- /.col-lg-6 -->
           <div class="col-sm-12 col-md-12 col-lg-6">
             <div class="text-container heading-layout2 scroll-reveal reveal-delay-2">
               <span class="heading__subtitle" style="color: #1E40AF; font-weight: 800; text-transform: uppercase;">Who We Are</span>
