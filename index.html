@@ -1557,11 +1557,23 @@
         submitBtn.disabled = true;
         submitBtn.style.opacity = '0.8';
 
+        // URL encode the form data so Google Apps Script can parse it in e.parameter
+        const formData = new FormData(form);
+        const urlEncodedData = new URLSearchParams(formData);
+
         fetch(form.action, {
           method: 'POST',
-          body: new FormData(form)
+          body: urlEncodedData,
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded'
+          }
         })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw new Error('Network response was not ok: ' + response.statusText);
+          }
+          return response.json();
+        })
         .then(data => {
           if (data.result === 'success') {
             Swal.fire({
@@ -1578,14 +1590,14 @@
             });
             form.reset();
           } else {
-            throw new Error(data.error || 'Unknown error');
+            throw new Error(data.error || 'The script returned an error.');
           }
         })
         .catch(error => {
           Swal.fire({
             icon: 'error',
             title: 'Oops...',
-            text: 'Something went wrong. Please try calling us directly or try again later.',
+            text: 'System message: ' + error.message,
             confirmButtonColor: '#1E40AF'
           });
           console.error('Form submission error:', error);
