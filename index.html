@@ -414,35 +414,35 @@
         opacity: 1 !important;
       }
 
-      /* Services Carousel - Premium White Circular Arrow Buttons */
+      /* Services Carousel - Premium Blue Circular Arrow Buttons */
       .services-layout2 .slick-arrow {
-        width: 40px !important;
-        height: 40px !important;
-        background-color: #ffffff !important;
+        width: 44px !important;
+        height: 44px !important;
+        background-color: #1E40AF !important; /* brand blue */
+        border: 2px solid #ffffff !important; /* white border for high contrast */
         border-radius: 50% !important;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
         z-index: 10 !important;
-        top: 100px !important; /* Centered exactly on the image height */
+        top: 50% !important; /* Centered in the middle of the whole card */
         transform: translateY(-50%) !important;
         display: inline-flex !important;
         align-items: center !important;
         justify-content: center !important;
-        border: none !important;
       }
       .services-layout2 .slick-arrow:hover {
-        background-color: #f8fafc !important;
+        background-color: #1D4ED8 !important;
       }
       .services-layout2 .slick-prev {
-        left: 2px !important;
+        left: -10px !important; /* floating slightly offset to look beautiful on card edges */
       }
       .services-layout2 .slick-next {
-        right: 2px !important;
+        right: -10px !important;
       }
       /* Custom icons inside the slick arrow buttons */
       .services-layout2 .slick-arrow:before {
         font-family: 'icomoon' !important;
         font-size: 16px !important;
-        color: #1E40AF !important;
+        color: #ffffff !important; /* white icon for contrast */
         line-height: 1 !important;
         display: block !important;
       }
@@ -451,6 +451,40 @@
       }
       .services-layout2 .slick-next:before {
         content: "\e92a" !important;
+      }
+
+      /* Show all pagination dots on mobile to prevent the "shifting active dot" bug */
+      .services-layout2 .slick-dots li,
+      .portfolio-standard-carousel .slick-dots li {
+        width: 10px !important;
+        height: 10px !important;
+        opacity: 0.35 !important;
+        margin: 0 5px !important;
+        display: inline-block !important;
+        background: #ffffff !important;
+        border-radius: 50% !important;
+        border: none !important;
+        overflow: visible !important;
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .services-layout2 .slick-dots li.slick-active,
+      .portfolio-standard-carousel .slick-dots li.slick-active {
+        width: 25px !important;
+        border-radius: 5px !important;
+        opacity: 1 !important;
+        background: #60A5FA !important;
+      }
+      .services-layout2 .slick-dots li button,
+      .portfolio-standard-carousel .slick-dots li button {
+        display: block !important;
+        background: transparent !important;
+        opacity: 0 !important;
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: inherit !important;
+        border: none !important;
+        font-size: 0 !important;
+        padding: 0 !important;
       }
 
       .features-wrapper .feature-item {
