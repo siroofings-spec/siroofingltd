@@ -1546,7 +1546,21 @@
     const contactForm = document.getElementById('contactForm');
     if (contactForm) {
       contactForm.addEventListener('submit', function(e) {
-        // Check validity first. If invalid, show validation messages and abort AJAX
+        // Manually validate custom NiceSelect dropdown since it's hidden from native tooltips
+        const serviceSelect = document.getElementById('serviceSelect');
+        if (serviceSelect && serviceSelect.value === "") {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Service Required!',
+            text: 'Please select a service from the dropdown list before submitting.',
+            confirmButtonColor: '#1E40AF',
+            confirmButtonText: 'OK'
+          });
+          e.preventDefault();
+          return;
+        }
+
+        // Check validity of other standard inputs (required & phone number format)
         if (!this.checkValidity()) {
           this.reportValidity();
           e.preventDefault();
