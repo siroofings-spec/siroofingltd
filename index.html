@@ -96,9 +96,9 @@
       position: relative;
       z-index: 99 !important;
       margin-top: -90px !important;
-      transform: translateY(220px) !important;
+      transform: translateY(40px) !important;
       opacity: 0 !important;
-      transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+      transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .features-latout1.scroll-reveal.active {
       transform: translateY(0) !important;
@@ -351,15 +351,15 @@
       .slider {
         height: auto !important;
         padding-top: 110px !important;
-        padding-bottom: 90px !important;
-        min-height: 80vh !important;
-        background-position: 80% center !important;
+        padding-bottom: 110px !important;
+        min-height: 85vh !important;
+        background-position: 95% center !important;
         display: flex !important;
         align-items: center !important;
       }
       .slider .slide-item__title {
-        font-size: 30px !important;
-        line-height: 1.2 !important;
+        font-size: 34px !important;
+        line-height: 1.15 !important;
         margin-bottom: 16px !important;
         font-weight: 800 !important;
       }
@@ -388,17 +388,29 @@
       .slider .slide-item__content .btn i {
         margin-right: 8px !important;
         font-size: 12px !important;
-        display: inline-block !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 26px !important;
+        height: 26px !important;
+        background: #ffffff !important;
+        color: #1E40AF !important;
+        border-radius: 50% !important;
         line-height: 1 !important;
       }
       .slider .slide-item__content .btn:last-child {
         margin-bottom: 0 !important;
       }
 
-      /* Reset Key Features Overlaps and Spacers */
+      /* Key Features Mobile Scroll Reveal (Fluid & Fast) */
       .features-latout1.scroll-reveal {
         margin-top: 0 !important;
-        transform: none !important;
+        transform: translateY(20px) !important;
+        opacity: 0 !important;
+        transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1), transform 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+      }
+      .features-latout1.scroll-reveal.active {
+        transform: translateY(0) !important;
         opacity: 1 !important;
       }
       .features-wrapper .feature-item {
@@ -1633,14 +1645,14 @@
 
       // Special scroll reveal for the top features banner to prevent load-time intersection triggers
       $(window).on('scroll', function() {
-        if ($(window).scrollTop() > 30) {
+        if ($(window).scrollTop() > 5) {
           $('.features-latout1').addClass('active');
         } else {
           $('.features-latout1').removeClass('active');
         }
       });
       // Initial trigger check on page load
-      if ($(window).scrollTop() > 30) {
+      if ($(window).scrollTop() > 5) {
         $('.features-latout1').addClass('active');
       } else {
         $('.features-latout1').removeClass('active');
