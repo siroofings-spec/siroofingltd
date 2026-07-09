@@ -453,15 +453,15 @@
         content: "\e92a" !important;
       }
 
-      /* Show all pagination dots on mobile to prevent the "shifting active dot" bug */
+      /* Show all pagination dots on mobile to prevent the "shifting active dot" bug and color mismatch */
       .services-layout2 .slick-dots li,
       .portfolio-standard-carousel .slick-dots li {
         width: 10px !important;
         height: 10px !important;
-        opacity: 0.35 !important;
+        opacity: 0.3 !important; /* Force inactive dots to be semi-transparent */
         margin: 0 5px !important;
         display: inline-block !important;
-        background: #ffffff !important;
+        background: #ffffff !important; /* White color for inactive dots */
         border-radius: 50% !important;
         border: none !important;
         overflow: visible !important;
@@ -471,8 +471,8 @@
       .portfolio-standard-carousel .slick-dots li.slick-active {
         width: 25px !important;
         border-radius: 5px !important;
-        opacity: 1 !important;
-        background: #60A5FA !important;
+        opacity: 1 !important; /* Force only the active dot to be fully opaque */
+        background: #60A5FA !important; /* Light blue active color */
       }
       .services-layout2 .slick-dots li button,
       .portfolio-standard-carousel .slick-dots li button {
