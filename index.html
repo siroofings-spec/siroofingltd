@@ -121,7 +121,10 @@
       display: none !important;
     }
 
-    /* Hide template large outline check marks to keep only FontAwesome checks */
+    /* Hide template large outline check marks to keep only FontAwesome checks, and remove original indent */
+    .list-items li {
+      padding-left: 0 !important;
+    }
     .list-items li:before {
       display: none !important;
     }
@@ -732,7 +735,7 @@
               <p class="heading__desc mt-25 mb-25" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #475569; line-height: 1.6;">S&amp;I Roofing Ltd is Ireland's leading provider of high-quality slate roofs, Velux window installations, and guttering services. We take pride in delivering honest, professional, and reliable craftsmanship to residential and commercial clients alike.
               </p>
               <p class="heading__desc mb-25" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; color: #475569; line-height: 1.6;">With our "Free inspection, transparent estimate" guarantee, we physically check your roof's condition to supply a precise, itemised cost sheet with zero obligation.</p>
-              <ul class="list-items list-unstyled mb-30" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; color: #0F172A; line-height: 1.8;">
+              <ul class="list-items list-unstyled mb-30" style="padding-left: 0; margin-left: 0; font-family: 'Plus Jakarta Sans', sans-serif; font-size: 15px; font-weight: 600; color: #0F172A; line-height: 1.8;">
                 <li><i class="fa fa-check-circle" style="color: #1E40AF; margin-right: 10px;"></i>Quality Control &amp; 100% Satisfaction Guarantee</li>
                 <li><i class="fa fa-check-circle" style="color: #1E40AF; margin-right: 10px;"></i>Licensed &amp; Fully Insured Master Roofers</li>
                 <li><i class="fa fa-check-circle" style="color: #1E40AF; margin-right: 10px;"></i>24/7 Mobile Storm Leak Repair Crews</li>
@@ -1170,7 +1173,7 @@
                   </div><!-- /. testimonial-item -->
                 </div>
               </div><!-- /.testimonials-layout1 -->
-              <form method="post" action="assets/php/contact.php" id="contactForm" class="contact-panel__form" style="padding: 50px 40px; background: #ffffff;">
+              <form method="post" action="https://script.google.com/macros/s/AKfycbzbPp9NwFgxOoPwROFsQixACgZb51LY8Eh7xHgXgyJsJrsuu40Hj5iHRe3SBv_TpCWq0g/exec" id="contactForm" class="contact-panel__form" style="padding: 50px 40px; background: #ffffff;">
                 <div class="row">
                   <div class="col-sm-12">
                     <h4 class="contact-panel__title" style="font-family: 'Outfit', sans-serif; font-weight: 800; font-size: 28px; color: #0F172A;">Request A Free Quote</h4>
@@ -1535,8 +1538,71 @@
           element.classList.add('active');
         });
       }
+      }
     });
+
+    // ==========================================================================
+    // CONTACT FORM AJAX SUBMISSION WITH SWEETALERT2
+    // ==========================================================================
+    const contactForm = document.getElementById('contactForm');
+    if (contactForm) {
+      contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const form = this;
+        const submitBtn = form.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        
+        // Loading state
+        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <span>Sending...</span>';
+        submitBtn.disabled = true;
+        submitBtn.style.opacity = '0.8';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form)
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.result === 'success') {
+            Swal.fire({
+              icon: 'success',
+              title: 'Request Sent Successfully!',
+              text: 'Thank you! One of our master roofers will contact you shortly to coordinate the free inspection.',
+              confirmButtonColor: '#1E40AF',
+              confirmButtonText: 'Great!',
+              background: '#ffffff',
+              customClass: {
+                title: 'font-outfit font-weight-bold',
+                popup: 'border-radius-12'
+              }
+            });
+            form.reset();
+          } else {
+            throw new Error(data.error || 'Unknown error');
+          }
+        })
+        .catch(error => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Something went wrong. Please try calling us directly or try again later.',
+            confirmButtonColor: '#1E40AF'
+          });
+          console.error('Form submission error:', error);
+        })
+        .finally(() => {
+          // Restore button state
+          submitBtn.innerHTML = originalText;
+          submitBtn.disabled = false;
+          submitBtn.style.opacity = '1';
+        });
+      });
+    }
   </script>
+
+  <!-- SweetAlert2 for Premium Popups -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 
 </html>
