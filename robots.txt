@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://siroofingltd.vercel.app/sitemap.xml
