@@ -982,7 +982,7 @@
               <div class="feature-item__content">
                 <h4 class="feature-item__title">Free Inspections</h4>
                 <p class="feature-item__desc">Detailed physical check of your slates, leadwork, valleys, and gutters with transparent written quotes.</p>
-                <a href="#contact" class="btn btn__link btn__secondary"><i class="icon-arrow-right"></i></a>
+                <a href="#contact" class="btn btn__link btn__secondary" aria-label="Request Free Inspection"><i class="icon-arrow-right"></i></a>
               </div><!-- /.feature-content -->
             </div><!-- /.col-lg-3 -->
             <!-- feature item #2 -->
@@ -990,7 +990,7 @@
               <div class="feature-item__content">
                 <h4 class="feature-item__title">24/7 Leak Response</h4>
                 <p class="feature-item__desc">Immediate storm leakage support and crew dispatch anywhere in Ireland. Average response under 2 hours.</p>
-                <a href="tel:+353838680611" class="btn btn__link btn__secondary"><i class="icon-arrow-right"></i></a>
+                <a href="tel:+353838680611" class="btn btn__link btn__secondary" aria-label="Call for Leak Response"><i class="icon-arrow-right"></i></a>
               </div><!-- /.feature-content -->
             </div><!-- /.col-lg-3 -->
             <!-- feature item #3 -->
@@ -998,7 +998,7 @@
               <div class="feature-item__content">
                 <h4 class="feature-item__title">Warranty Guarantee</h4>
                 <p class="feature-item__desc">Written warranties up to 25 years on new roofs, attic insulation, lead flashing, and dry verge systems.</p>
-                <a href="#contact" class="btn btn__link btn__secondary"><i class="icon-arrow-right"></i></a>
+                <a href="#contact" class="btn btn__link btn__secondary" aria-label="Request Warranty Details"><i class="icon-arrow-right"></i></a>
               </div><!-- /.feature-content -->
             </div><!-- /.col-lg-3 -->
             <!-- feature item #4 -->
@@ -1564,17 +1564,17 @@
                   </div>
                   <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group" style="margin-bottom: 20px;">
-                      <input type="text" class="form-control" placeholder="Full Name" id="contact-name" name="contact-name" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
+                      <input type="text" class="form-control" placeholder="Full Name" id="contact-name" name="contact-name" aria-label="Full Name" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-6 col-lg-6">
                     <div class="form-group" style="margin-bottom: 20px;">
-                      <input type="tel" class="form-control" placeholder="Phone Number" id="contact-Phone" name="contact-phone" required pattern="^[+]*[0-9\s-]{7,15}$" title="Please enter a valid phone number (between 7 and 15 digits)" style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
+                      <input type="tel" class="form-control" placeholder="Phone Number" id="contact-phone" name="contact-phone" aria-label="Phone Number" required pattern="^[+]*[0-9\s-]{7,15}$" title="Please enter a valid phone number (between 7 and 15 digits)" style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px;">
                     </div>
                   </div><!-- /.col-lg-6 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group" style="margin-bottom: 20px;">
-                      <select class="form-control" id="serviceSelect" name="contact-service" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px; display: block !important;">
+                      <select class="form-control" id="serviceSelect" name="contact-service" aria-label="Select Service Needed" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 50px; display: block !important;">
                         <option value="">Select Service Needed...</option>
                         <option value="Velux Windows">Velux Windows</option>
                         <option value="Roof Repair">Roof Repair</option>
@@ -1589,7 +1589,7 @@
                   </div><!-- /.col-lg-12 -->
                   <div class="col-sm-12 col-md-12 col-lg-12">
                     <div class="form-group" style="margin-bottom: 25px;">
-                      <textarea class="form-control" placeholder="Project Description, Roofing Issues, or Location" id="contact-messgae" name="contact-messgae" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 120px; padding: 15px;"></textarea>
+                      <textarea class="form-control" placeholder="Project Description, Roofing Issues, or Location" id="contact-message" name="contact-message" aria-label="Project Description, Roofing Issues, or Location" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 120px; padding: 15px;"></textarea>
                     </div>
                   </div><!-- /.col-lg-12 -->
                   <div class="col-sm-12 col-md-12 col-lg-12 d-flex flex-wrap align-items-center justify-content-between mt-10">
@@ -1744,7 +1744,8 @@
                     <li><a href="#services" style="color: #94a3b8; transition: color 0.3s;">Our Services</a></li>
                     <li><a href="#about" style="color: #94a3b8; transition: color 0.3s;">About Us</a></li>
                     <li><a href="#projects" style="color: #94a3b8; transition: color 0.3s;">Projects Showcase</a></li>
-                    <li><a href="#contact" style="color: #94a3b8; transition: color 0.3s;">Reviews &amp; Testimonials</a></li>
+                    <li><a href="#reviews" style="color: #94a3b8; transition: color 0.3s;">Reviews &amp; Testimonials</a></li>
+                    <li><a href="#faq" style="color: #94a3b8; transition: color 0.3s;">FAQ</a></li>
                     <li><a href="privacy.html" style="color: #94a3b8; transition: color 0.3s; font-weight: 700;">Privacy Policy</a></li>
                   </ul>
                 </nav>
@@ -1804,6 +1805,8 @@
 
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/plugins.js"></script>
+  <!-- SweetAlert2 for Premium Popups -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
@@ -1922,101 +1925,6 @@
         });
       }
     });
-
-    // ==========================================================================
-    // CONTACT FORM AJAX SUBMISSION WITH SWEETALERT2
-    // ==========================================================================
-    const contactForm = document.getElementById('contactForm');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        // Manually validate custom NiceSelect dropdown since it's hidden from native tooltips
-        const serviceSelect = document.getElementById('serviceSelect');
-        if (serviceSelect && serviceSelect.value === "") {
-          Swal.fire({
-            icon: 'warning',
-            title: 'Service Required!',
-            text: 'Please select a service from the dropdown list before submitting.',
-            confirmButtonColor: '#1E40AF',
-            confirmButtonText: 'OK'
-          });
-          e.preventDefault();
-          return;
-        }
-
-        // Check validity of other standard inputs (required & phone number format)
-        if (!this.checkValidity()) {
-          this.reportValidity();
-          e.preventDefault();
-          return;
-        }
-        e.preventDefault();
-        
-        const form = this;
-        const submitBtn = form.querySelector('button[type="submit"]');
-        const originalText = submitBtn.innerHTML;
-        
-        // Loading state
-        submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <span>Sending...</span>';
-        submitBtn.disabled = true;
-        submitBtn.style.opacity = '0.8';
-
-        // URL encode the form data so Google Apps Script can parse it in e.parameter
-        const formData = new FormData(form);
-        const urlEncodedData = new URLSearchParams(formData);
-
-        fetch(form.action, {
-          method: 'POST',
-          body: urlEncodedData,
-          headers: {
-            'Content-Type': 'application/x-www-form-urlencoded'
-          }
-        })
-        .then(response => {
-          if (!response.ok) {
-            throw new Error('Network response was not ok: ' + response.statusText);
-          }
-          return response.json();
-        })
-        .then(data => {
-          if (data.result === 'success') {
-            Swal.fire({
-              icon: 'success',
-              title: 'Request Sent Successfully!',
-              text: 'Thank you! One of our master roofers will contact you shortly to coordinate the free inspection.',
-              confirmButtonColor: '#1E40AF',
-              confirmButtonText: 'Great!',
-              background: '#ffffff',
-              customClass: {
-                title: 'font-outfit font-weight-bold',
-                popup: 'border-radius-12'
-              }
-            });
-            form.reset();
-          } else {
-            throw new Error(data.error || 'The script returned an error.');
-          }
-        })
-        .catch(error => {
-          Swal.fire({
-            icon: 'error',
-            title: 'Oops...',
-            text: 'System message: ' + error.message,
-            confirmButtonColor: '#1E40AF'
-          });
-          console.error('Form submission error:', error);
-        })
-        .finally(() => {
-          // Restore button state
-          submitBtn.innerHTML = originalText;
-          submitBtn.disabled = false;
-          submitBtn.style.opacity = '1';
-        });
-      });
-    }
   </script>
-
-  <!-- SweetAlert2 for Premium Popups -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
-
 </html>

@@ -111,26 +111,93 @@ $(function () {
     loadMore('.loadMoreportfolio', '.portfolio-hidden > .portfolio-item');
 
 
-    /*==========  Contact Form validation  ==========*/
-    var contactForm = $("#contactForm"),
-        contactResult = $('.contact-result');
-    contactForm.validate({
-        debug: false,
-        submitHandler: function (contactForm) {
-            $(contactResult, contactForm).html('Please Wait...');
-            $.ajax({
-                type: "POST",
-                url: "assets/php/contact.php",
-                data: $(contactForm).serialize(),
-                timeout: 20000,
-                success: function (msg) {
-                    $(contactResult, contactForm).html('<div class="alert alert-success" role="alert"><strong>Thank you. We will contact you shortly.</strong></div>').delay(3000).fadeOut(2000);
-                },
-                error: $('.thanks').show()
-            });
-            return false;
-        }
-    });
+    /*==========  Contact Form validation & Google Sheets Submission  ==========*/
+    var contactForm = $("#contactForm");
+    if (contactForm.length) {
+        contactForm.validate({
+            debug: false,
+            submitHandler: function (form, event) {
+                if (event) event.preventDefault();
+                
+                // Manually validate custom NiceSelect dropdown since it's hidden from native validation
+                var serviceSelect = document.getElementById('serviceSelect');
+                if (serviceSelect && serviceSelect.value === "") {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Service Required!',
+                        text: 'Please select a service from the dropdown list before submitting.',
+                        confirmButtonColor: '#1E40AF',
+                        confirmButtonText: 'OK'
+                    });
+                    return false;
+                }
+
+                var submitBtn = form.querySelector('button[type="submit"]');
+                var originalText = submitBtn.innerHTML;
+
+                // Loading state
+                submitBtn.innerHTML = '<i class="fa fa-spinner fa-spin"></i> <span>Sending...</span>';
+                submitBtn.disabled = true;
+                submitBtn.style.opacity = '0.8';
+
+                // URL encode the form data so Google Apps Script can parse it in e.parameter
+                var formData = new FormData(form);
+                var urlEncodedData = new URLSearchParams(formData);
+
+                fetch(form.action, {
+                    method: 'POST',
+                    body: urlEncodedData,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    }
+                })
+                .then(function(response) {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok: ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(function(data) {
+                    if (data.result === 'success') {
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Request Sent Successfully!',
+                            text: 'Thank you! One of our master roofers will contact you shortly to coordinate the free inspection.',
+                            confirmButtonColor: '#1E40AF',
+                            confirmButtonText: 'Great!',
+                            background: '#ffffff',
+                            customClass: {
+                                title: 'font-outfit font-weight-bold',
+                                popup: 'border-radius-12'
+                            }
+                        });
+                        form.reset();
+                        // Reset NiceSelect dropdown UI
+                        $(serviceSelect).val('').niceSelect('update');
+                    } else {
+                        throw new Error(data.error || 'The script returned an error.');
+                    }
+                })
+                .catch(function(error) {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'System message: ' + error.message,
+                        confirmButtonColor: '#1E40AF'
+                    });
+                    console.error('Form submission error:', error);
+                })
+                .finally(function() {
+                    // Restore button state
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = '1';
+                });
+
+                return false;
+            }
+        });
+    }
 
     /*==========   Slick Carousel ==========*/
     $('.slick-carousel').on('init reInit', function (event, slick) {
