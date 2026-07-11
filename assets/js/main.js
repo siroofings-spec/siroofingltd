@@ -132,6 +132,26 @@ $(function () {
                     return false;
                 }
 
+                // Check honeypot anti-bot field
+                var honeypot = document.getElementById('honeypot-field');
+                if (honeypot && honeypot.value !== '') {
+                    // Bot detected — silently block submission
+                    return false;
+                }
+
+                // Validate Cloudflare Turnstile CAPTCHA token
+                var turnstileResponse = form.querySelector('[name="cf-turnstile-response"]');
+                if (!turnstileResponse || !turnstileResponse.value) {
+                    Swal.fire({
+                        icon: 'warning',
+                        title: 'Verification Required',
+                        text: 'Please complete the security verification before submitting.',
+                        confirmButtonColor: '#1E40AF',
+                        confirmButtonText: 'OK'
+                    });
+                    return false;
+                }
+
                 var submitBtn = form.querySelector('button[type="submit"]');
                 var originalText = submitBtn.innerHTML;
 
@@ -142,6 +162,8 @@ $(function () {
 
                 // URL encode the form data so Google Apps Script can parse it in e.parameter
                 var formData = new FormData(form);
+                // Remove honeypot field from data sent to server
+                formData.delete('company_website');
                 var urlEncodedData = new URLSearchParams(formData);
 
                 fetch(form.action, {
@@ -182,7 +204,7 @@ $(function () {
                     Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
-                        text: 'System message: ' + error.message,
+                        text: 'Something went wrong. Please try again or call us directly at +353 83 868 0611.',
                         confirmButtonColor: '#1E40AF'
                     });
                     console.error('Form submission error:', error);
@@ -192,6 +214,10 @@ $(function () {
                     submitBtn.innerHTML = originalText;
                     submitBtn.disabled = false;
                     submitBtn.style.opacity = '1';
+                    // Reset Turnstile widget for re-submission
+                    if (typeof turnstile !== 'undefined') {
+                        turnstile.reset();
+                    }
                 });
 
                 return false;

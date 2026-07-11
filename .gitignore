@@ -8,3 +8,8 @@ unused_amarou_templates/
 # Ignore system files
 .DS_Store
 Thumbs.db
+
+# Ignore development utilities & scripts
+*.py
+scratch/
+avatars/

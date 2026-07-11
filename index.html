@@ -172,7 +172,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="preconnect" href="https://use.fontawesome.com">
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300..800;1,300..800&family=Outfit:wght@400;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="stylesheet" href="assets/css/libraries.css">
   <link rel="stylesheet" href="assets/css/style.css">
   <style>
@@ -1592,12 +1592,20 @@
                       <textarea class="form-control" placeholder="Project Description, Roofing Issues, or Location" id="contact-message" name="contact-message" aria-label="Project Description, Roofing Issues, or Location" required style="border-radius: 6px; border: 1px solid #cbd5e1; height: 120px; padding: 15px;"></textarea>
                     </div>
                   </div><!-- /.col-lg-12 -->
+                  <!-- Honeypot anti-bot field (hidden from humans, visible to bots) -->
+                  <div style="position: absolute; left: -9999px; top: -9999px;" aria-hidden="true">
+                    <input type="text" name="company_website" id="honeypot-field" tabindex="-1" autocomplete="off" value="">
+                  </div>
+                  <!-- Cloudflare Turnstile CAPTCHA Widget -->
+                  <div class="col-sm-12 col-md-12 col-lg-12" style="margin-bottom: 20px;">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAABc1amMqMHk1R4Zy" data-theme="light" data-size="normal"></div>
+                  </div>
                   <div class="col-sm-12 col-md-12 col-lg-12 d-flex flex-wrap align-items-center justify-content-between mt-10">
                     <button type="submit" class="btn btn__secondary">
                       <i class="icon-arrow-right"></i> <span>Submit Request</span>
                     </button>
                     <p style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 13px; color: #64748B; margin: 15px 0 0 0;">
-                      By submitting, you agree to our <a href="privacy.html" target="_blank" style="color: #1E40AF; text-decoration: underline; font-weight: 700;">Privacy Policy</a>.
+                      By submitting, you agree to our <a href="privacy.html" target="_blank" rel="noopener noreferrer" style="color: #1E40AF; text-decoration: underline; font-weight: 700;">Privacy Policy</a>.
                     </p>
                   </div><!-- /.col-lg-12 -->
                 </div>
@@ -1760,7 +1768,7 @@
                 </a><!-- /.contact__number -->
                 <p class="mb-30" style="font-family: 'Plus Jakarta Sans', sans-serif; font-size: 14px; color: #94a3b8;">Baywood Villa, Moorefield Road, Newbridge, Co. Kildare, W12 K381</p>
                 <ul class="social-icons list-unstyled d-flex">
-                  <li><a href="https://wa.me/353838680611" target="_blank" style="background-color: #25D366; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 22px;"><i class="fab fa-whatsapp"></i></a></li>
+                  <li><a href="https://wa.me/353838680611" target="_blank" rel="noopener noreferrer" style="background-color: #25D366; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-right: 10px; font-size: 22px;"><i class="fab fa-whatsapp"></i></a></li>
                   <li><a href="tel:+353838680611" style="background-color: #1E40AF; color: #ffffff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px;"><i class="fas fa-phone"></i></a></li>
                 </ul><!-- /.social-icons -->
               </div><!-- /.footer-widget-content -->
@@ -1792,7 +1800,7 @@
     <!-- Floating Contact Actions -->
     <div class="floating-actions">
       <!-- WhatsApp Button -->
-      <a href="https://wa.me/353838680611?text=Hello%20S%26I%20Roofing%20Ltd,%20I%20would%20like%20a%20free%20quote" target="_blank" class="action-btn-wa">
+      <a href="https://wa.me/353838680611?text=Hello%20S%26I%20Roofing%20Ltd,%20I%20would%20like%20a%20free%20quote" target="_blank" rel="noopener noreferrer" class="action-btn-wa">
         <i class="fab fa-whatsapp"></i>
       </a>
       <!-- Phone Button -->
@@ -1806,7 +1814,9 @@
   <script src="assets/js/jquery-3.5.1.min.js"></script>
   <script src="assets/js/plugins.js"></script>
   <!-- SweetAlert2 for Premium Popups -->
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11" integrity="sha384-nLoOnA/BDh8A/jxqtckg4DumuCGOBYUnNJLZdQz/zfYNp3wcjGSoWTAzgko06G/2" crossorigin="anonymous"></script>
+  <!-- Cloudflare Turnstile Anti-Bot -->
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
   <script src="assets/js/main.js"></script>
   <script>
     $(document).ready(function() {
@@ -1816,9 +1826,11 @@
       var navItems = $('.navbar-nav .nav__item-link');
 
       // Smooth scrolling for navigation links
+      // Allowlist of valid section IDs to prevent DOM-XSS via hash injection
+      var allowedSections = ['#home','#about','#services','#projects','#reviews','#contact','#faq'];
       $('a[href^="#"]').on('click', function(e) {
         var target = this.hash;
-        if (target && $(target).length) {
+        if (target && allowedSections.indexOf(target) !== -1 && $(target).length) {
           e.preventDefault();
           isScrollingClick = true;
           
