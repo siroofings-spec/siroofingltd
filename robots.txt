@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://siroofingltd.vercel.app/sitemap.xml
+Sitemap: https://www.siroofingservices.com/sitemap.xml
